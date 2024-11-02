@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba4f0597d8f2d1468da023afd04b4fb, type: 3}
+  m_Name: Nico Cima
+  m_EditorClassIdentifier: 
+  framesOfGap: 9
+  sprites:
+  - {fileID: 1312713664, guid: 9c923ab473d5a644893a21ef42c2a9b2, type: 3}
+  - {fileID: 866523233, guid: 9c923ab473d5a644893a21ef42c2a9b2, type: 3}
+  - {fileID: 628665881, guid: 9c923ab473d5a644893a21ef42c2a9b2, type: 3}
+  - {fileID: 1156664559, guid: 9c923ab473d5a644893a21ef42c2a9b2, type: 3}
+  - {fileID: 118909050, guid: 9c923ab473d5a644893a21ef42c2a9b2, type: 3}
+  loop: 1

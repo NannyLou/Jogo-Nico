@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba4f0597d8f2d1468da023afd04b4fb, type: 3}
+  m_Name: Nico Esq
+  m_EditorClassIdentifier: 
+  framesOfGap: 9
+  sprites:
+  - {fileID: -1774656166, guid: 9c923ab473d5a644893a21ef42c2a9b2, type: 3}
+  - {fileID: 1003037041, guid: 9c923ab473d5a644893a21ef42c2a9b2, type: 3}
+  - {fileID: 246496927, guid: 9c923ab473d5a644893a21ef42c2a9b2, type: 3}
+  - {fileID: 218242672, guid: 9c923ab473d5a644893a21ef42c2a9b2, type: 3}
+  - {fileID: -52419635, guid: 9c923ab473d5a644893a21ef42c2a9b2, type: 3}
+  loop: 1
