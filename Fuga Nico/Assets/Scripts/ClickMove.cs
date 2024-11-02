@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ClickMove : MonoBehaviour
 {
-    public bool playerWalking = true;
+    public bool playerWalking = false;
     public Transform player;
     GameManager gameManager;
     float goToClickMaxY = 1.7f;
@@ -21,24 +20,48 @@ public class ClickMove : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
+            // Verifica se o clique foi em um obstáculo
+            RaycastHit2D hit = Physics2D.Raycast(myCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (hit.collider != null)
+            {
+                // Se o objeto clicado tem a tag "Obstacle", não faz nada
+                if (hit.collider.CompareTag("Obstacle"))
+                    return;
+            }
+
+            // Interrompe a corrotina anterior se houver
+            if (goToClickCoroutine != null)
+            {
+                StopCoroutine(goToClickCoroutine);
+            }
             goToClickCoroutine = StartCoroutine(GoToClick(Input.mousePosition));
         }
     }
 
     public IEnumerator GoToClick(Vector2 mousePos)
     {
-        //wait to make room for GoToItem() checks
+        // Aguarda um pouco para evitar conflitos com outras ações
         yield return new WaitForSeconds(0.05f);
 
         Vector2 targetPos = myCamera.ScreenToWorldPoint(mousePos);
-        if (targetPos.y > goToClickMaxY || playerWalking)
+        if (targetPos.y > goToClickMaxY)
             yield break;
-        //start walking
+
+        // Interrompe qualquer movimento atual
+        if (playerWalking)
+        {
+            playerWalking = false;
+            yield return null; // Aguarda o final do quadro para garantir que o estado seja atualizado
+        }
+
+        // Inicia o movimento
         playerWalking = true;
-        StartCoroutine(gameManager.MoveToPoint(player, targetPos));
-        //play animation
+        goToClickCoroutine = StartCoroutine(gameManager.MoveToPoint(player, targetPos));
+
+        // Inicia a animação de caminhada
         player.GetComponent<SpriteAnimator>().PlayAnimation(gameManager.playerAnimations[1]);
-        //stop walking
+
+        // Aguarda o término do movimento
         StartCoroutine(CleanAfterClick());
     }
 
@@ -46,72 +69,10 @@ public class ClickMove : MonoBehaviour
     {
         while (playerWalking)
             yield return new WaitForSeconds(0.05f);
+
+        // Para a animação de caminhada
         player.GetComponent<SpriteAnimator>().PlayAnimation(null);
-        yield return null;
-    }
-
-    public void GoToItem(ItemData1 item)
-    {
-        if (!playerWalking)
-        {
-            //play walk animation
-            player.GetComponent<SpriteAnimator>().PlayAnimation(gameManager.playerAnimations[1]);
-            playerWalking = true;
-            //start moving player
-            StartCoroutine(gameManager.MoveToPoint(player, item.goToPoint.position));
-            //equipment stuff
-            TryGettingItem(item);
-        }
-    }
-
-    private void TryGettingItem(ItemData1 item)
-    {
-        bool canGetItem = item.requiredItemID == -1 || GameManager.collectedItems.Contains(item.requiredItemID);
-        if (canGetItem)
-        {
-            GameManager.collectedItems.Add(item.itemID);
-        }
-    }
-
-    //private IEnumerator UpdateSceneAfterAction(ItemData1 item)
-    //{
-    //    while(playerWalking)
-    //    {
-    //        yield return new WaitForSeconds(0.05f);
-    //    }
-
-    //    foreach(GameObject g in item.objectsToRemove)
-    //    {
-    //        Destroy(g);
-    //    }
-    //    player.GetComponent<SpriteAnimator>().PlayAnimation(null);
-    //    Debug.Log("item coletado");
-    //    yield return null;
-    //}
-
-    private IEnumerator UpdateSceneAfterAction(ItemData1 item, bool canGetItem)
-    {
-        //prevent goToClick if going to item
-        yield return null;
-        if (goToClickCoroutine != null)
-            StopCoroutine(goToClickCoroutine);
-
-        //wait for player reaching target
-        while (playerWalking)
-            yield return new WaitForSeconds(0.05f);
-        //play player's base animation
-        player.GetComponent<SpriteAnimator>().PlayAnimation(null);
-        yield return new WaitForSeconds(0.5f);
-
-        if (canGetItem)
-        {
-            //play use animation
-            player.GetComponent<SpriteAnimator>().PlayAnimation(gameManager.playerAnimations[2]);
-            //remove objects
-            foreach (GameObject g in item.objectsToRemove)
-                Destroy(g);
-        }
-
+        goToClickCoroutine = null;
         yield return null;
     }
 }

@@ -9,9 +9,12 @@ public class Gaiola : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    private MensagemManager mensagemManager;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        mensagemManager = FindObjectOfType<MensagemManager>();
     }
 
     private void OnMouseDown()
@@ -29,7 +32,8 @@ public class Gaiola : MonoBehaviour
             }
             else
             {
-                Debug.Log("A gaiola está trancada. Você precisa de uma chave.");
+                // Exibir mensagem na tela
+                mensagemManager.MostrarMensagem("A gaiola está trancada. Você precisa de uma chave.");
             }
         }
     }

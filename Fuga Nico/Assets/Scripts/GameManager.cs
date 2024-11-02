@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,35 +6,71 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static List<int> collectedItems = new List<int>();
-    static float moveSpeed = 3.5f;
-    static float moveAccuracy = 0.15f;
+    public float moveSpeed = 3.5f;
+    public float moveAccuracy = 0.15f;
     public AnimationData[] playerAnimations;
     int activeLocalScene = 0;
 
     public IEnumerator MoveToPoint(Transform myObject, Vector2 point)
     {
-        //calculate position difference
-        Vector2 positionDifference = point - (Vector2)myObject.position;
-        //flip object
-        if (myObject.GetComponentInChildren<SpriteRenderer>() && positionDifference.x != 0)
+        Rigidbody2D rb = myObject.GetComponent<Rigidbody2D>();
+        if (rb == null)
         {
-            myObject.GetComponentInChildren<SpriteRenderer>().flipX = positionDifference.x > 0;
+            Debug.LogError("Rigidbody2D não encontrado no objeto do jogador.");
+            yield break;
         }
-        //stop when we are near the point
-        while (positionDifference.magnitude > moveAccuracy)
-        {
-            //move in direction frame
-            myObject.Translate(moveSpeed * positionDifference.normalized * Time.deltaTime);
-            //recalculate position difference
-            positionDifference = point - (Vector2)myObject.position;
-            yield return null;
-        }
-        //snap to point
-        myObject.position = point;
 
-        //tell ClickManager that the player has arrived
-        if (myObject == FindObjectOfType<ClickMove>().player || activeLocalScene == 0)
-            FindObjectOfType<ClickMove>().playerWalking = false;
+        SpriteRenderer spriteRenderer = myObject.GetComponentInChildren<SpriteRenderer>();
+
+        // Variável para detectar colisão
+        bool isBlocked = false;
+
+        // Obter ou adicionar o CollisionDetector
+        CollisionDetector collisionDetector = myObject.GetComponent<CollisionDetector>();
+        if (collisionDetector == null)
+        {
+            collisionDetector = myObject.gameObject.AddComponent<CollisionDetector>();
+        }
+
+        // Handler de colisão
+        Action collisionHandler = () => { isBlocked = true; };
+
+        // Subscrição ao evento
+        collisionDetector.OnCollisionDetected += collisionHandler;
+
+        while (true)
+        {
+            Vector2 currentPosition = rb.position;
+            Vector2 direction = (point - currentPosition).normalized;
+            float remainingDistance = Vector2.Distance(currentPosition, point);
+
+            if (remainingDistance <= moveAccuracy || isBlocked)
+                break;
+
+            if (spriteRenderer && direction.x != 0)
+            {
+                spriteRenderer.flipX = direction.x > 0;
+            }
+
+            // Move o jogador usando o Rigidbody2D
+            float step = moveSpeed * Time.fixedDeltaTime;
+            Vector2 newPosition = Vector2.MoveTowards(rb.position, point, step);
+            rb.MovePosition(newPosition);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        // Remove a subscrição ao evento
+        collisionDetector.OnCollisionDetected -= collisionHandler;
+
+        // Para o jogador
+        rb.velocity = Vector2.zero;
+
+        // Informa ao ClickMove que o jogador chegou ou está bloqueado
+        ClickMove clickMove = FindObjectOfType<ClickMove>();
+        if (clickMove != null && (myObject == clickMove.player || activeLocalScene == 0))
+            clickMove.playerWalking = false;
+
         yield return null;
     }
 }

@@ -7,6 +7,8 @@ public class ItemData : ScriptableObject
     {
         none,
         chave,
+        chave2,
+
         // Adicione outros itens conforme necessário
     }
 

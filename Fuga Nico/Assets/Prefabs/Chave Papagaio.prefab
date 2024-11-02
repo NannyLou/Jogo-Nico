@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4764646138991902867}
   - component: {fileID: 6938223412297904437}
   m_Layer: 0
-  m_Name: Chave_Item
+  m_Name: Chave Papagaio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
