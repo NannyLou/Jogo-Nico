@@ -18,7 +18,15 @@ public class InventarioManager : MonoBehaviour
     public Color selectedItemColor = Color.yellow;   // Cor do slot selecionado
     public int selectedCanvasSlotID = -1;            // ID do slot atualmente selecionado
     public ItemData.items selectedItemID = ItemData.items.none;  // ID do item atualmente selecionado
-
+    public bool HasItem(ItemData.items itemID)
+{
+    foreach (ItemData item in collectedItems)
+    {
+        if (item.itemID == itemID)
+            return true;
+    }
+    return false;
+}
     private void Awake()
     {
         if (instance == null)

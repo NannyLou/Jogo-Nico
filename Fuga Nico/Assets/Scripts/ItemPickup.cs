@@ -3,7 +3,7 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     public ItemData itemData;  // Referência ao ScriptableObject do item
-    public float maxPickupDistance = 1.0f; // Distância máxima para pegar o item
+    public float maxPickupDistance = 1.5f; // Distância máxima para pegar o item
 
     private Collider2D playerCollider;
     private Collider2D itemCollider;
