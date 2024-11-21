@@ -14,6 +14,15 @@ public class ClickMove : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         myCamera = GetComponent<Camera>();
+
+        // Reposiciona o jogador se uma posição inicial foi definida
+        if (GameManager.playerStartPosition != Vector2.zero)
+        {
+            player.position = GameManager.playerStartPosition;
+
+            // Opcional: Reseta a posição inicial no GameManager
+            // GameManager.playerStartPosition = Vector2.zero;
+        }
     }
 
     public void Update()

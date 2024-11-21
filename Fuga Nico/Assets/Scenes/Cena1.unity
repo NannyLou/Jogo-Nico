@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lvlName: Cena2
+  playerStartingPosition: {x: 4.61, y: -4.13}
 --- !u!1 &48104755
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lvlName: Cena3
+  playerStartingPosition: {x: 0, y: 0}
 --- !u!60 &76760059
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1341,6 +1343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lvlName: CenaFinal
+  playerStartingPosition: {x: 0, y: 0}
 --- !u!60 &435169723
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -5200,11 +5203,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4399714015538418805, guid: 0d58a00b6ab227841960e3b6a9abdbf6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.79
+      value: -4.06
       objectReference: {fileID: 0}
     - target: {fileID: 4399714015538418805, guid: 0d58a00b6ab227841960e3b6a9abdbf6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14
+      value: -2.27
       objectReference: {fileID: 0}
     - target: {fileID: 4399714015538418805, guid: 0d58a00b6ab227841960e3b6a9abdbf6, type: 3}
       propertyPath: m_LocalPosition.z

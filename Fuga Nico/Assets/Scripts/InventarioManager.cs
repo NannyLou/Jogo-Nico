@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class InventarioManager : MonoBehaviour
 {
     public static InventarioManager instance;
 
     // Lista de itens coletados pelo jogador
-    public static List<ItemData> collectedItems = new List<ItemData>();
+    public List<ItemData> collectedItems = new List<ItemData>();
 
     [Header("UI do Inventário")]
     public GameObject equipmentCanvas;               // UI do inventário
@@ -27,20 +28,37 @@ public class InventarioManager : MonoBehaviour
     }
     return false;
 }
-    private void Awake()
+private void Awake()
+{
+    if (instance == null)
     {
-        if (instance == null)
+        instance = this;
+        DontDestroyOnLoad(gameObject); // Mantém o InventarioManager entre cenas
+
+        // Torna o EquipmentCanvas filho do InventarioManager
+        if (equipmentCanvas != null)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject); // Opcional: mantém o InventarioManager entre cenas
-            equipmentCanvas.SetActive(true);
+            DontDestroyOnLoad(equipmentCanvas);
+            equipmentCanvas.transform.SetParent(this.transform);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+
+        // Inscreve-se no evento de cena carregada
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    else
+    {
+        Destroy(gameObject);
+    }
+}
+
+    // Método chamado quando uma nova cena é carregada
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Atualizar o inventário na nova cena
+        UpdateEquipmentCanvas();
     }
 
+    // Reatribuir os componentes de UI na nova cena
     // Função para selecionar um item no inventário
     public void SelectItem(int equipmentCanvasID)
     {
@@ -98,4 +116,10 @@ public class InventarioManager : MonoBehaviour
             SelectItem(-1);
         }
     }
+     private void OnDestroy()
+    {
+        // Desinscreve-se do evento ao destruir o InventarioManager
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 }
+

@@ -10,6 +10,12 @@ public class ItemPickup : MonoBehaviour
 
     private void Start()
     {
+            // Verifica se o item já foi coletado
+        if (InventarioManager.instance != null && InventarioManager.instance.HasItem(itemData.itemID))
+        {
+            // Destrói o objeto se o item já foi coletado
+            Destroy(gameObject);
+        }
         // Encontre o jogador na cena (assumindo que ele tem a tag "Player")
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
@@ -50,7 +56,7 @@ public class ItemPickup : MonoBehaviour
         if (distance <= maxPickupDistance)
         {
             // Adiciona o item ao inventário
-            InventarioManager.collectedItems.Add(itemData);
+            InventarioManager.instance.collectedItems.Add(itemData);
             InventarioManager.instance.UpdateEquipmentCanvas();
 
             // Remove o objeto da cena

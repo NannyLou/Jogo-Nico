@@ -26,7 +26,7 @@ public class Gaiola : MonoBehaviour
                 OpenGaiola();
 
                 // Remover a chave do inventário, se desejar
-                InventarioManager.collectedItems.RemoveAll(item => item.itemID == requiredItem);
+                InventarioManager.instance.collectedItems.RemoveAll(item => item.itemID == requiredItem);
                 InventarioManager.instance.UpdateEquipmentCanvas();
                 InventarioManager.instance.SelectItem(-1);
             }

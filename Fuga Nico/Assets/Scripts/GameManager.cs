@@ -6,6 +6,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static List<int> collectedItems = new List<int>();
+    public static Vector2 playerStartPosition = Vector2.zero; // Variável adicionada
+
     public float moveSpeed = 3.5f;
     public float moveAccuracy = 0.15f;
     public AnimationData[] playerAnimations;
