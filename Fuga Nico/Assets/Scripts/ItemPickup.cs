@@ -3,73 +3,59 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     public ItemData itemData;  // Referência ao ScriptableObject do item
-    public float maxPickupDistance = 1.5f; // Distância máxima para pegar o item
 
-    private Collider2D playerCollider;
-    private Collider2D itemCollider;
+    private ClickMove clickMove;
+    private bool isPlayerMovingToItem = false;
 
     private void Start()
     {
-            // Verifica se o item já foi coletado
-        if (InventarioManager.instance != null && InventarioManager.instance.HasItem(itemData.itemID))
+        // Verifica se o item já foi coletado anteriormente
+        if (InventarioManager.instance != null && itemData != null)
         {
-            // Destrói o objeto se o item já foi coletado
-            Destroy(gameObject);
-        }
-        // Encontre o jogador na cena (assumindo que ele tem a tag "Player")
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            playerCollider = player.GetComponentInChildren<Collider2D>();
-            if (playerCollider == null)
+            if (InventarioManager.instance.collectedItemIDs.Contains(itemData.itemID))
             {
-                Debug.LogError("Collider2D não encontrado no jogador.");
+                // Destrói o objeto se o item já foi coletado
+                Destroy(gameObject);
+                return;
             }
         }
-        else
-        {
-            Debug.LogError("Jogador não encontrado na cena. Certifique-se de que o jogador tem a tag 'Player'.");
-        }
 
-        itemCollider = GetComponent<Collider2D>();
-        if (itemCollider == null)
+        // Obtém referência ao ClickMove
+        clickMove = FindObjectOfType<ClickMove>();
+        if (clickMove == null)
         {
-            Debug.LogError("Collider2D não encontrado no item.");
+            Debug.LogError("ClickMove não encontrado na cena.");
         }
     }
 
     private void OnMouseDown()
     {
-        if (playerCollider == null || itemCollider == null)
-            return;
+        if (clickMove != null)
+        {
+            // Move o jogador até a posição do item
+            clickMove.MovePlayerToPoint(transform.position);
+            isPlayerMovingToItem = true;
+        }
+    }
 
-        // Calcula a distância entre os pontos mais próximos dos dois colisores
-        Vector2 closestPointOnPlayer = playerCollider.ClosestPoint(itemCollider.bounds.center);
-        Vector2 closestPointOnItem = itemCollider.ClosestPoint(playerCollider.bounds.center);
-
-        float distance = Vector2.Distance(closestPointOnPlayer, closestPointOnItem);
-
-        // Logs de depuração
-        Debug.Log("Distância entre os colisores: " + distance);
-        Debug.Log("Distância máxima para pegar o item: " + maxPickupDistance);
-
-        if (distance <= maxPickupDistance)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isPlayerMovingToItem && collision.CompareTag("Player"))
         {
             // Adiciona o item ao inventário
-            InventarioManager.instance.collectedItems.Add(itemData);
-            InventarioManager.instance.UpdateEquipmentCanvas();
+            if (InventarioManager.instance != null)
+            {
+                InventarioManager.instance.AddItem(itemData);
+            }
+            else
+            {
+                Debug.LogError("InventarioManager.instance é nulo.");
+            }
 
             // Remove o objeto da cena
             Destroy(gameObject);
-        }
-        else
-        {
-            // Exibe mensagem informando que o personagem está longe
-            MensagemManager mensagemManager = FindObjectOfType<MensagemManager>();
-            if (mensagemManager != null)
-            {
-                mensagemManager.MostrarMensagem("Você está muito longe para pegar o item.");
-            }
+
+            isPlayerMovingToItem = false;
         }
     }
 }

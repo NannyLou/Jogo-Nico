@@ -4,6 +4,20 @@ using UnityEngine.UI;
 
 public class HintButtonController : MonoBehaviour
 {
+  public static HintButtonController instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject); // Persiste entre as cenas
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private Button hintButton;
 
     private void Start()

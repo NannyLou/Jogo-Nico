@@ -74,6 +74,31 @@ public class ClickMove : MonoBehaviour
         StartCoroutine(CleanAfterClick());
     }
 
+    public void MovePlayerToPoint(Vector2 targetPos)
+    {
+        // Interrompe a corrotina anterior se houver
+        if (goToClickCoroutine != null)
+        {
+            StopCoroutine(goToClickCoroutine);
+        }
+
+        // Interrompe qualquer movimento atual
+        if (playerWalking)
+        {
+            playerWalking = false;
+        }
+
+        // Inicia o movimento
+        playerWalking = true;
+        goToClickCoroutine = StartCoroutine(gameManager.MoveToPoint(player, targetPos));
+
+        // Inicia a animação de caminhada
+        player.GetComponent<SpriteAnimator>().PlayAnimation(gameManager.playerAnimations[1]);
+
+        // Aguarda o término do movimento
+        StartCoroutine(CleanAfterClick());
+    }
+
     private IEnumerator CleanAfterClick()
     {
         while (playerWalking)

@@ -10,6 +10,30 @@ public class NPCDialogue : MonoBehaviour
     public GameObject hintButton; // Referência ao botão de dica
 
     private bool isFree = false; // Estado do Zeca
+    private UniqueID uniqueID;   // Adicionado para identificar o Zeca
+
+    private void Awake()
+    {
+        uniqueID = GetComponent<UniqueID>();
+    }
+
+    private void Start()
+    {
+        // Verifica se o Zeca já foi destruído
+        if (StateManager.instance != null && uniqueID != null)
+        {
+            if (StateManager.instance.IsObjectDestroyed(uniqueID.uniqueID))
+            {
+                // Ativa o botão de dica
+                if (hintButton != null)
+                {
+                    hintButton.SetActive(true);
+                }
+                Destroy(gameObject);
+                return;
+            }
+        }
+    }
 
     private void OnMouseDown()
     {
@@ -64,20 +88,33 @@ public class NPCDialogue : MonoBehaviour
     // Método chamado quando o diálogo termina
     private void OnFreeDialogueEnd()
     {
-        // Desinscrever-se do evento para evitar chamadas duplicadas
-        DialogueManager.instance.OnDialogueEnd -= OnFreeDialogueEnd;
+        // Desinscrever-se do evento OnDialogueEnd
+        if (DialogueManager.instance != null)
+        {
+            DialogueManager.instance.OnDialogueEnd -= OnFreeDialogueEnd;
+        }
 
-        // Destruir o GameObject do Zeca
-        Destroy(gameObject);
+        // Registra o Zeca como destruído
+        if (StateManager.instance != null && uniqueID != null)
+        {
+            StateManager.instance.RegisterDestroyedObject(uniqueID.uniqueID);
+        }
 
-        // Ativar o botão de dica
+        // Ativa o botão de dica
         if (hintButton != null)
         {
             hintButton.SetActive(true);
         }
-        else
-        {
-            Debug.LogError("HintButton não está atribuído no NPCDialogue.");
-        }
+
+        // Destrói o GameObject do Zeca
+        Destroy(gameObject);
     }
+    private void OnDestroy()
+    {
+    if (DialogueManager.instance != null)
+    {
+        DialogueManager.instance.OnDialogueEnd -= OnFreeDialogueEnd;
+    }
+  }
+
 }

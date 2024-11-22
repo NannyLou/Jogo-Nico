@@ -7,9 +7,11 @@ using UnityEngine.SceneManagement;
 public class InventarioManager : MonoBehaviour
 {
     public static InventarioManager instance;
-
-    // Lista de itens coletados pelo jogador
+     // Lista de itens atualmente no inventário
     public List<ItemData> collectedItems = new List<ItemData>();
+
+    // Nova lista para rastrear os IDs dos itens já coletados
+    public List<ItemData.items> collectedItemIDs = new List<ItemData.items>();
 
     [Header("UI do Inventário")]
     public GameObject equipmentCanvas;               // UI do inventário
@@ -116,6 +118,24 @@ private void Awake()
             SelectItem(-1);
         }
     }
+    public void AddItem(ItemData item)
+    {
+    if (item == null)
+        return;
+
+    // Adiciona o item ao inventário
+    collectedItems.Add(item);
+
+    // Adiciona o ID do item à lista de IDs coletados, se ainda não estiver presente
+    if (!collectedItemIDs.Contains(item.itemID))
+    {
+        collectedItemIDs.Add(item.itemID);
+    }
+
+    // Atualiza a UI do inventário
+    UpdateEquipmentCanvas();
+    }
+
      private void OnDestroy()
     {
         // Desinscreve-se do evento ao destruir o InventarioManager

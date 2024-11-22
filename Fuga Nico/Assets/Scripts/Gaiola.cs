@@ -2,59 +2,63 @@ using UnityEngine;
 
 public class Gaiola : MonoBehaviour
 {
-    public ItemData.items requiredItem = ItemData.items.chave; // Item necessário para abrir a gaiola
-    private bool isOpen = false;
-
     public Sprite openedGaiolaSprite; // Sprite da gaiola aberta (se tiver)
+    private bool isOpen = false;
 
     private SpriteRenderer spriteRenderer;
 
-    private MensagemManager mensagemManager;
+    private UniqueID uniqueID; // Adicionado para identificar a gaiola
+
+    private void Awake()
+    {
+        uniqueID = GetComponent<UniqueID>();
+    }
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        mensagemManager = FindObjectOfType<MensagemManager>();
-    }
 
-    private void OnMouseDown()
-    {
-        if (!isOpen)
+        // Verifica se a gaiola já foi destruída
+        if (StateManager.instance != null && uniqueID != null)
         {
-            if (InventarioManager.instance.selectedItemID == requiredItem)
+            if (StateManager.instance.IsObjectDestroyed(uniqueID.uniqueID))
             {
-                OpenGaiola();
-
-                // Remover a chave do inventário, se desejar
-                InventarioManager.instance.collectedItems.RemoveAll(item => item.itemID == requiredItem);
-                InventarioManager.instance.UpdateEquipmentCanvas();
-                InventarioManager.instance.SelectItem(-1);
-            }
-            else
-            {
-                // Exibir mensagem na tela
-                mensagemManager.MostrarMensagem("A gaiola está trancada. Você precisa de uma chave.");
+                Destroy(gameObject);
+                return;
             }
         }
     }
 
-    private void OpenGaiola()
+    // Remova o método OnMouseDown(), pois a interação agora será no cadeado
+
+    public void OpenGaiola()
     {
+        if (isOpen)
+            return;
+
         isOpen = true;
-        // Se tiver um sprite de gaiola aberta, altere para ele
+
+        // Se tiver um sprite de gaiola aberta, altera para ele
         if (openedGaiolaSprite != null)
         {
             spriteRenderer.sprite = openedGaiolaSprite;
         }
         else
         {
-            // Se não, desative o sprite atual para sumir as grades
+            // Se não, desativa o sprite atual para sumir as grades
             spriteRenderer.enabled = false;
         }
 
-        // Opcional: Desativar o collider para não interagir mais
+        // Opcional: desativar o collider para não interagir mais
         GetComponent<Collider2D>().enabled = false;
 
-        // Opcional: Executar alguma animação ou efeito
+        // Registra a gaiola como destruída
+        if (StateManager.instance != null && uniqueID != null)
+        {
+            StateManager.instance.RegisterDestroyedObject(uniqueID.uniqueID);
+        }
+
+        // Destrói o GameObject da gaiola, se desejar
+        // Destroy(gameObject); // Descomente esta linha se quiser destruir a gaiola
     }
 }
