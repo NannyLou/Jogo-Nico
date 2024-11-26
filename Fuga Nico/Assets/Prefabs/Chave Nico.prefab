@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2543951171586652792}
   - component: {fileID: 8412208830733007860}
-  - component: {fileID: 5823043684246463674}
   m_Layer: 0
   m_Name: Chave Nico
   m_TagString: Untagged
@@ -117,20 +116,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5823043684246463674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2417366242187722441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c0e52435729a3749ac8a5653bc6681e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goToPoint: {fileID: 5172098176560047573}
-  itemID: 0
-  requiredItemID: -1
-  objectsToRemove:
-  - {fileID: 2417366242187722441}
