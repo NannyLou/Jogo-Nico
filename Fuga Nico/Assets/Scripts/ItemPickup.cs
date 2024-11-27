@@ -3,6 +3,7 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     public ItemData itemData;  // Referência ao ScriptableObject do item
+    public VilaoMovimento vilao; // Referência ao script do vilão
 
     private ClickMove clickMove;
     private bool isPlayerMovingToItem = false;
@@ -50,6 +51,12 @@ public class ItemPickup : MonoBehaviour
             else
             {
                 Debug.LogError("InventarioManager.instance é nulo.");
+            }
+
+            // Notifica o vilão para iniciar o retorno
+            if (vilao != null)
+            {
+                vilao.StartReturn();
             }
 
             // Remove o objeto da cena

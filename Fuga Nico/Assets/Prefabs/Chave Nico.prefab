@@ -60,7 +60,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.01, y: -2.71, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5172098176560047573}
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 2afe028b578e5574f8008af7adde7b33, type: 2}
+  vilao: {fileID: 7222612314502036318, guid: 0e043c7131b58d74fa2dabb1ab753aab, type: 3}
 --- !u!60 &8468147781422101661
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -185,6 +185,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Dani_4
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 195
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 195a31d268be0c04d8d6acbe200b99e6
+      internalID: 1856113768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dani_5
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 158
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71c05eea97516574786bf7b53f172a78
+      internalID: 1140429626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dani_6
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 231
+        width: 19
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51db70f8d5f5a4944a42b5d4b3dc09dd
+      internalID: 737983395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -199,6 +262,9 @@ TextureImporter:
       Dani_1: 1605880495
       Dani_2: -2072753117
       Dani_3: -2135613001
+      Dani_4: 1856113768
+      Dani_5: 1140429626
+      Dani_6: 737983395
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
