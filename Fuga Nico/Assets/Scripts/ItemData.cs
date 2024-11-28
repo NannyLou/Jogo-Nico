@@ -8,6 +8,10 @@ public class ItemData : ScriptableObject
         none,
         chave,
         chave2,
+        remedio,
+        feno,
+        celular,
+        chave3,
 
         // Adicione outros itens conforme necessário
     }
