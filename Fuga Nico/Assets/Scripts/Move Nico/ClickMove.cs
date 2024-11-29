@@ -47,6 +47,19 @@ public class ClickMove : MonoBehaviour
         }
     }
 
+    public void StopPlayerMovement()
+    {
+        if (goToClickCoroutine != null)
+        {
+            StopCoroutine(goToClickCoroutine);
+            goToClickCoroutine = null;
+        }
+
+        playerWalking = false;
+        player.GetComponent<SpriteAnimator>().PlayAnimation(null); // Interrompe a animação de caminhada
+    }
+
+
     public IEnumerator GoToClick(Vector2 mousePos)
     {
         // Aguarda um pouco para evitar conflitos com outras ações

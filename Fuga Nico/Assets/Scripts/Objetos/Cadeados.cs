@@ -5,11 +5,15 @@ using UnityEngine;
 public class Cadeados : MonoBehaviour
 {
     public ItemData.items requiredItem = ItemData.items.chave; // Item necessário para abrir o cadeado
-    public Gaiola gaiola; // Referência à Gaiola que será aberta
-    public GaiolaZeca gaiolaZeca;
+
+    // Referências às gaiolas que podem ser abertas
+    public Gaiola gaiola;               // Gaiola genérica
+    public GaiolaTeoTelma gaiolaTeoTelma; // Gaiola do Teo e Telma
+    public GaiolaZeca gaiolaZeca;         // Gaiola do Zeca
+
     private MensagemManager mensagemManager;
 
-    private UniqueID uniqueID; // Adicionado para identificar o cadeado
+    private UniqueID uniqueID; // Identificador único do cadeado
 
     private void Awake()
     {
@@ -35,21 +39,36 @@ public class Cadeados : MonoBehaviour
     {
         if (InventarioManager.instance.selectedItemID == requiredItem)
         {
-            // Chama o método para abrir a gaiola
+            // Remove a chave do inventário
+            InventarioManager.instance.collectedItems.RemoveAll(item => item.itemID == requiredItem);
+            InventarioManager.instance.UpdateEquipmentCanvas();
+            InventarioManager.instance.SelectItem(-1);
+
+            // Abre a gaiola correspondente
+            bool gaiolaAberta = false;
+
             if (gaiola != null)
             {
                 gaiola.OpenGaiola();
+                gaiolaAberta = true;
+            }
+
+            if (gaiolaTeoTelma != null)
+            {
+                gaiolaTeoTelma.OpenGaiola();
+                gaiolaAberta = true;
             }
 
             if (gaiolaZeca != null)
             {
                 gaiolaZeca.OpenGaiola();
+                gaiolaAberta = true;
             }
 
-            // Remove a chave do inventário, se desejar
-            InventarioManager.instance.collectedItems.RemoveAll(item => item.itemID == requiredItem);
-            InventarioManager.instance.UpdateEquipmentCanvas();
-            InventarioManager.instance.SelectItem(-1);
+            if (!gaiolaAberta)
+            {
+                Debug.LogWarning("Nenhuma gaiola atribuída ao cadeado na cena atual.");
+            }
 
             // Registra o cadeado como destruído
             if (StateManager.instance != null && uniqueID != null)
@@ -66,6 +85,10 @@ public class Cadeados : MonoBehaviour
             if (mensagemManager != null)
             {
                 mensagemManager.MostrarMensagem("O cadeado está trancado. Você precisa de uma chave.");
+            }
+            else
+            {
+                Debug.LogWarning("MensagemManager não encontrado na cena.");
             }
         }
     }

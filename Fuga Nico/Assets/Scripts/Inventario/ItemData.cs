@@ -12,6 +12,8 @@ public class ItemData : ScriptableObject
         feno,
         celular,
         chave3,
+        teo,
+        telma,
 
         // Adicione outros itens conforme necessário
     }

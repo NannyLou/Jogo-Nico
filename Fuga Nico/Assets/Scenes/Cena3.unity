@@ -1909,6 +1909,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 93495319}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &837092229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 837092231}
+  - component: {fileID: 837092230}
+  m_Layer: 0
+  m_Name: StateManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &837092230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837092229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ee8f41793a6a343aaadffd52002b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &837092231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837092229}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.4587244, y: 2.3887947, z: -0.1311618}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &866204292
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,6 +3185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jogador: {fileID: 5588636684827020285}
   vilao: {fileID: 1918601005}
+  copoUniqueID: {fileID: 2145194125}
 --- !u!61 &1553157799
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4253,6 +4298,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1106853809385574950, guid: 0e043c7131b58d74fa2dabb1ab753aab, type: 3}
+      propertyPath: uniqueID
+      value: Daniel1
+      objectReference: {fileID: 0}
     - target: {fileID: 3779080596049122894, guid: 0e043c7131b58d74fa2dabb1ab753aab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.47
@@ -4836,6 +4885,7 @@ GameObject:
   - component: {fileID: 2145194123}
   - component: {fileID: 2145194122}
   - component: {fileID: 2145194121}
+  - component: {fileID: 2145194125}
   m_Layer: 0
   m_Name: Copo
   m_TagString: Untagged
@@ -4855,9 +4905,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c50f804cd983c4ca251cc6a63b1dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vilao: {fileID: 1918601005}
   requiredItem: 3
-  copo: {fileID: 2145194120}
+  dialogLines:
+  - opa
+  - 'Zeca: Se esconde em baixo da mesa Nico!'
+  - "Zeca: Para o Daniel n\xE3o lhe ver."
 --- !u!61 &2145194122
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4970,6 +5022,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2145194125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145194120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c9b6700a74d5242b9bc12307725b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: Copo
 --- !u!1 &2146227921
 GameObject:
   m_ObjectHideFlags: 0
@@ -5190,6 +5255,7 @@ SceneRoots:
   - {fileID: 2145194124}
   - {fileID: 1553157801}
   - {fileID: 1701015383}
+  - {fileID: 837092231}
   - {fileID: 1984059180}
   - {fileID: 1092525077}
   - {fileID: 1913431783}

@@ -13,7 +13,7 @@ public class DanielMove : MonoBehaviour
     public AnimationData walkAnimation; // Animação de caminhar
     public AnimationData idleAnimation; // Animação de parado (sentado)
 
-    public GameObject copo; // Referência ao copo que será destruído
+    public GameObject copo; // Referência ao copo
     public int waypointIndex; // Define qual waypoint está o copo
 
     public Transform jogadorRespawnPoint; // Ponto específico para o jogador reaparecer
@@ -23,8 +23,25 @@ public class DanielMove : MonoBehaviour
 
     private bool isMoving = false;
 
+    private UniqueID uniqueID; // Identificador único do vilão
+
+    private void Awake()
+    {
+        uniqueID = GetComponent<UniqueID>();
+    }
+
     private void Start()
     {
+        // Verifica se o vilão já foi destruído
+        if (StateManager.instance != null && uniqueID != null)
+        {
+            if (StateManager.instance.IsObjectDestroyed(uniqueID.uniqueID))
+            {
+                Destroy(gameObject); // Remove o vilão imediatamente
+                return;
+            }
+        }
+
         spriteAnimator = GetComponent<SpriteAnimator>();
         originalScale = transform.localScale;
 
@@ -57,10 +74,20 @@ public class DanielMove : MonoBehaviour
             // Verifica se chegou no waypoint
             if (Vector3.Distance(transform.position, target.position) < 0.1f)
             {
-                // Se o waypoint atual é onde o copo está, destrói o copo
+                // Se o waypoint atual é onde o copo está, oculta o copo
                 if (currentWaypointIndex == waypointIndex && copo != null)
                 {
-                    Destroy(copo);
+                    copo.SetActive(false); // Oculta o copo
+
+                    // Registra o copo como "destruído" no StateManager
+                    if (StateManager.instance != null)
+                    {
+                        var copoUniqueID = copo.GetComponent<UniqueID>();
+                        if (copoUniqueID != null)
+                        {
+                            StateManager.instance.RegisterDestroyedObject(copoUniqueID.uniqueID);
+                        }
+                    }
                 }
 
                 currentWaypointIndex++;
@@ -71,26 +98,22 @@ public class DanielMove : MonoBehaviour
             // Quando terminar o caminho, reaparece o jogador no ponto específico
             if (jogador != null && jogadorRespawnPoint != null)
             {
+                ClickMove clickMove = FindObjectOfType<ClickMove>();
+                if (clickMove != null)
+                {
+                    clickMove.StopPlayerMovement(); // Interrompe qualquer movimento pendente
+                }
                 jogador.transform.position = jogadorRespawnPoint.position; // Move o jogador ao ponto de respawn
                 jogador.SetActive(true); // Reativa o jogador no cenário
             }
 
-            // Espera um pouco para garantir que o jogador foi completamente reativado
-            StartCoroutine(WaitForPlayerActivation());
+            // Registra o vilão como destruído no StateManager
+            if (StateManager.instance != null && uniqueID != null)
+            {
+                StateManager.instance.RegisterDestroyedObject(uniqueID.uniqueID);
+            }
 
             Destroy(gameObject); // Remove o vilão
-        }
-    }
-
-    private IEnumerator WaitForPlayerActivation()
-    {
-        // Aguarda um curto período para garantir que o jogador foi completamente reativado
-        yield return new WaitForSeconds(0.1f);
-
-        // Agora que o jogador está ativo, inicia a animação de caminhada
-        if (spriteAnimator != null && walkAnimation != null && jogador != null && jogador.activeInHierarchy)
-        {
-            spriteAnimator.PlayAnimation(walkAnimation); // Inicia a animação de caminhar
         }
     }
 
