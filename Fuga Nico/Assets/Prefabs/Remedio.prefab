@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8891572908659885256}
   - component: {fileID: 4590272242900072008}
   - component: {fileID: 1035991849493536409}
-  - component: {fileID: 266388672031426461}
+  - component: {fileID: 4172740306985984643}
   m_Layer: 0
   m_Name: Remedio
   m_TagString: Untagged
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 063e7056bffd6234b83a2152998260d0, type: 2}
   vilao: {fileID: 0}
---- !u!70 &266388672031426461
-CapsuleCollider2D:
+--- !u!60 &4172740306985984643
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -132,6 +132,33 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0054904623, y: -0.0018301805}
-  m_Size: {x: 0.37669215, y: 0.3986535}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.34375, y: 0.34375}
+    newSize: {x: 0.34375, y: 0.34375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.021400684, y: 0.19855542}
+      - {x: -0.030287825, y: 0.22154915}
+      - {x: -0.075933374, y: 0.22496283}
+      - {x: -0.1573507, y: 0.19366167}
+      - {x: -0.23069215, y: 0.09493601}
+      - {x: -0.23458391, y: 0.03456319}
+      - {x: -0.17913723, y: -0.060188927}
+      - {x: -0.13686982, y: -0.11718291}
+      - {x: -0.09833057, y: -0.16196269}
+      - {x: -0.050505955, y: -0.2033445}
+      - {x: 0.05934516, y: -0.2145985}
+      - {x: 0.1287844, y: -0.2128323}
+      - {x: 0.19729266, y: -0.17308538}
+      - {x: 0.21838592, y: -0.12633833}
+      - {x: 0.2366634, y: -0.06341413}
+      - {x: 0.15129884, y: 0.07207315}
+      - {x: 0.05127779, y: 0.17308521}
+  m_UseDelaunayMesh: 0

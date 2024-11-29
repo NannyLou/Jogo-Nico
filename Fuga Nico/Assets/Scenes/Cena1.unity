@@ -576,7 +576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &76760058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2478,7 +2478,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 9
   m_Sprite: {fileID: -626774426, guid: fa3fb56d4f5896a4abcd90dc8f4676d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2763,7 +2763,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1801067203}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1086387804
+--- !u!114 &1086387808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2772,10 +2772,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 1749193}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4c9b6700a74d5242b9bc12307725b51, type: 3}
+  m_Script: {fileID: 11500000, guid: caa406bbc4dbbfb42a43b865d74143a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: Daniel
+  waypoints:
+  - {fileID: 186620884}
+  - {fileID: 528671914}
+  - {fileID: 1250585951}
+  - {fileID: 1051740175}
+  - {fileID: 749148979}
+  - {fileID: 969872248}
+  - {fileID: 497888379}
+  - {fileID: 1121590252}
+  - {fileID: 2045612575}
+  - {fileID: 596703955}
+  - {fileID: 1817604046}
+  - {fileID: 1742823905}
+  - {fileID: 1062992551}
+  - {fileID: 1562630614}
+  - {fileID: 2022327885}
+  - {fileID: 2069132996}
+  speed: 3
+  walkAnimation: {fileID: 11400000, guid: ccd59cf33fa6ba042ac9d400bebaff20, type: 2}
+  idleAnimation: {fileID: 11400000, guid: bbbfec5ab507b384f899855d91e107e8, type: 2}
+  chavePrefab: {fileID: 2417366242187722441, guid: e8aa325642701b149ab8383c57f5327a, type: 3}
+  chavePosition: {fileID: 56432773}
+  waypointIndexToDropKey: 3
+  secondKeyPrefab: {fileID: 2088289285885136477, guid: 27f12f46d11ae0f4f893dc76952863f5, type: 3}
+  dialogueLines:
+  - 'Daniel: Zeca seu papagaio veio'
+  - 'Daniel: Pare de cantar que eu estou lendo meu jornal'
+  - -Zeca murmura para nico-
+  - 'Zeca: Nico, eu acho que vc consegue pegar a chave do Daniel...'
 --- !u!1 &1092525073
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,7 +3169,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 9
   m_Sprite: {fileID: 441804681, guid: fa3fb56d4f5896a4abcd90dc8f4676d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4215,7 +4243,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: c862caab2e900b740a3443d068b36bd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5488,7 +5516,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 8d841ed1287e3004eaf1005eb809281c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6083,10 +6111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c0e52435729a3749ac8a5653bc6681e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goToPoint: {fileID: 0}
-  itemID: 0
-  requiredItemID: 0
-  objectsToRemove: []
 --- !u!1 &2069132995
 GameObject:
   m_ObjectHideFlags: 0
@@ -6333,6 +6357,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3415239042082939994, guid: 0e043c7131b58d74fa2dabb1ab753aab, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3779080596049122894, guid: 0e043c7131b58d74fa2dabb1ab753aab, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6
@@ -6375,11 +6403,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3892427991742458039, guid: 0e043c7131b58d74fa2dabb1ab753aab, type: 3}
       propertyPath: m_Size.x
-      value: 0.30959725
+      value: 0.19005752
       objectReference: {fileID: 0}
     - target: {fileID: 3892427991742458039, guid: 0e043c7131b58d74fa2dabb1ab753aab, type: 3}
       propertyPath: m_Offset.x
-      value: -0.050647616
+      value: -0.110417485
       objectReference: {fileID: 0}
     - target: {fileID: 7222612314502036318, guid: 0e043c7131b58d74fa2dabb1ab753aab, type: 3}
       propertyPath: speed
@@ -6509,8 +6537,8 @@ PrefabInstance:
       addedObject: {fileID: 56432773}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7679473023258239569, guid: 0e043c7131b58d74fa2dabb1ab753aab, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1086387804}
+      insertIndex: 1
+      addedObject: {fileID: 1086387808}
   m_SourcePrefab: {fileID: 100100000, guid: 0e043c7131b58d74fa2dabb1ab753aab, type: 3}
 --- !u!1001 &4513566817604183126
 PrefabInstance:
@@ -6579,7 +6607,6 @@ SceneRoots:
   - {fileID: 4513566817604183126}
   - {fileID: 1208203153}
   - {fileID: 682869618093815138}
-  - {fileID: 1801067203}
   - {fileID: 541211864}
   - {fileID: 578824508}
   - {fileID: 843338506}
@@ -6588,4 +6615,5 @@ SceneRoots:
   - {fileID: 2035149636}
   - {fileID: 1984059180}
   - {fileID: 1092525077}
+  - {fileID: 1801067203}
   - {fileID: 1247448751}

@@ -2377,7 +2377,7 @@ GameObject:
   - component: {fileID: 1395830922}
   - component: {fileID: 1395830921}
   m_Layer: 0
-  m_Name: Vald_2
+  m_Name: Valdivino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2423,7 +2423,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 941501512, guid: cc11ab989fd9336499b8b0f1fa6fdf1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3377,7 +3377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1701015380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4062,8 +4062,8 @@ SceneRoots:
   - {fileID: 425851379}
   - {fileID: 93495319}
   - {fileID: 5588636684827020283}
+  - {fileID: 1395830922}
   - {fileID: 541211864}
   - {fileID: 1701015383}
   - {fileID: 1984059180}
   - {fileID: 1092525077}
-  - {fileID: 1395830922}
