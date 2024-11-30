@@ -730,7 +730,7 @@ GameObject:
   - component: {fileID: 167718081}
   - component: {fileID: 167718080}
   m_Layer: 0
-  m_Name: Gaiola
+  m_Name: Gaiola Telma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1083,7 +1083,7 @@ GameObject:
   - component: {fileID: 498110051}
   - component: {fileID: 498110050}
   m_Layer: 0
-  m_Name: Gaiola Telma
+  m_Name: Porta Gaiola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1836,7 +1836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e260f5050d1eb64498934916d2b92da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredItem: 6
+  requiredItem: 4
   gaiola: {fileID: 0}
   gaiolaTeoTelma: {fileID: 498110050}
   gaiolaZeca: {fileID: 0}
@@ -3883,10 +3883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c0e52435729a3749ac8a5653bc6681e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goToPoint: {fileID: 0}
-  itemID: 0
-  requiredItemID: 0
-  objectsToRemove: []
 --- !u!1 &2106553436
 GameObject:
   m_ObjectHideFlags: 0
@@ -4286,13 +4282,13 @@ SceneRoots:
   - {fileID: 572612657}
   - {fileID: 93495319}
   - {fileID: 5588636684827020283}
-  - {fileID: 541211864}
   - {fileID: 8849168233708495676}
+  - {fileID: 541211864}
+  - {fileID: 8240898795266765518}
   - {fileID: 957348857}
   - {fileID: 498110054}
-  - {fileID: 8240898795266765518}
+  - {fileID: 167718081}
   - {fileID: 1701015383}
   - {fileID: 1984059180}
   - {fileID: 1092525077}
   - {fileID: 76760061}
-  - {fileID: 167718081}

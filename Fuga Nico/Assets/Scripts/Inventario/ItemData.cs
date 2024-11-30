@@ -6,15 +6,16 @@ public class ItemData : ScriptableObject
     public enum items
     {
         none,
-        chave,
-        chave2,
-        remedio,
-        feno,
-        celular,
-        chave3,
+        chaveNico,
+        chaveZeca,
+        chaveTeo,
+        chaveTelma,
+        chaveSaida,
         teo,
         telma,
-
+        remedio,
+        celular,
+        feno,
         // Adicione outros itens conforme necessário
     }
 

@@ -1040,7 +1040,7 @@ MonoBehaviour:
   lvlName: Cena2_1
   playerStartingPosition: {x: 0, y: 0}
   requiresHintButton: 0
-  requiredItem: 7
+  requiredItem: 6
   requiresItem: 1
   blockIfHasItem: 0
 --- !u!60 &338160875

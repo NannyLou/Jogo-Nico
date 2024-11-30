@@ -185,6 +185,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Vald_4
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 0
+        width: 21
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cee4ffffeea7f941b8820752ccddf9f
+      internalID: -242899372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -216,6 +237,7 @@ TextureImporter:
       Vald_1: 1916339561
       Vald_2: 941501512
       Vald_3: -738562454
+      Vald_4: -242899372
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

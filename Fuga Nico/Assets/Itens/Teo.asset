@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e492ca6afbe6c3441931c164a39b434b, type: 3}
   m_Name: Teo
   m_EditorClassIdentifier: 
-  itemID: 7
+  itemID: 6
   itemName: Teo
   itemSlotSprite: {fileID: 940832079, guid: e246a3d0021e4424582c251e97540931, type: 3}

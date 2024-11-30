@@ -48,7 +48,7 @@ public class HintButtonController : MonoBehaviour
         // Exemplo de verificação de itens e cenas
         if (sceneName == "Cena1")
         {
-            if (InventarioManager.instance.HasItem(ItemData.items.chave))
+            if (InventarioManager.instance.HasItem(ItemData.items.chaveZeca))
             {
                 dialogueLines.Add("Zeca: Eita, de onde vc tirou essa chave?");
             }

@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c9b6700a74d5242b9bc12307725b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: telma
+  uniqueID: Telma
 --- !u!114 &1801495170951951761
 MonoBehaviour:
   m_ObjectHideFlags: 0

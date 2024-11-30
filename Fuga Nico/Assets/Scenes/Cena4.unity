@@ -283,6 +283,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlName: Cena2
   playerStartingPosition: {x: 0, y: 0}
+  requiresHintButton: 0
+  requiredItem: 0
+  requiresItem: 0
+  blockIfHasItem: 0
 --- !u!1 &48104755
 GameObject:
   m_ObjectHideFlags: 0
@@ -3498,7 +3502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e260f5050d1eb64498934916d2b92da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredItem: 6
+  requiredItem: 3
   gaiola: {fileID: 0}
   gaiolaTeoTelma: {fileID: 57630404}
   gaiolaZeca: {fileID: 0}
@@ -4280,10 +4284,10 @@ SceneRoots:
   - {fileID: 1447969042}
   - {fileID: 5588636684827020283}
   - {fileID: 2409434813644997071}
-  - {fileID: 57630403}
-  - {fileID: 1864944954}
   - {fileID: 541211864}
   - {fileID: 8283114614927526119}
+  - {fileID: 57630403}
+  - {fileID: 1864944954}
   - {fileID: 1701015383}
   - {fileID: 1984059180}
   - {fileID: 1092525077}

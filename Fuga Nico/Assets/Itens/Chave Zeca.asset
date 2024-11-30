@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e492ca6afbe6c3441931c164a39b434b, type: 3}
   m_Name: Chave Zeca
   m_EditorClassIdentifier: 
-  itemID: 1
-  itemName: Chave
+  itemID: 2
+  itemName: Chave Zeca
   itemSlotSprite: {fileID: 233808951, guid: fa3fb56d4f5896a4abcd90dc8f4676d4, type: 3}

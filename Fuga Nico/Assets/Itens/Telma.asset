@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e492ca6afbe6c3441931c164a39b434b, type: 3}
   m_Name: Telma
   m_EditorClassIdentifier: 
-  itemID: 8
+  itemID: 7
   itemName: Telma
   itemSlotSprite: {fileID: -107226957, guid: 91c8aeb19c6399b4eb8e023a689e2b4c, type: 3}

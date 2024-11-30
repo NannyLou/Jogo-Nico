@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e492ca6afbe6c3441931c164a39b434b, type: 3}
-  m_Name: Celular
+  m_Name: Chave Telma
   m_EditorClassIdentifier: 
-  itemID: 9
-  itemName: Celular
-  itemSlotSprite: {fileID: 1279062576, guid: 553c95472d00dac459427618ac826beb, type: 3}
+  itemID: 4
+  itemName: Chave Telma
+  itemSlotSprite: {fileID: 93235317, guid: 553c95472d00dac459427618ac826beb, type: 3}

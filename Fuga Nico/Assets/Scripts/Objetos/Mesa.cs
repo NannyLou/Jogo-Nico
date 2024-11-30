@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movel : MonoBehaviour
+public class Mesa : MonoBehaviour
 {
     public GameObject jogador; // Referência ao jogador
     public DanielMove vilao;   // Referência ao vilão

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cadeados : MonoBehaviour
 {
-    public ItemData.items requiredItem = ItemData.items.chave; // Item necessário para abrir o cadeado
+    public ItemData.items requiredItem = ItemData.items.chaveZeca; // Item necessário para abrir o cadeado
 
     // Referências às gaiolas que podem ser abertas
     public Gaiola gaiola;               // Gaiola genérica

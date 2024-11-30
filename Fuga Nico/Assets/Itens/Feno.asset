@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e492ca6afbe6c3441931c164a39b434b, type: 3}
   m_Name: Feno
   m_EditorClassIdentifier: 
-  itemID: 4
+  itemID: 10
   itemName: Feno
   itemSlotSprite: {fileID: 428572105, guid: e97cc87c331fd444e9fa3394fdae9499, type: 3}
