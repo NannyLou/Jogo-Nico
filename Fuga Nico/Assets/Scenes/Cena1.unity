@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 32863798}
   - component: {fileID: 32863797}
   - component: {fileID: 32863800}
+  - component: {fileID: 32863801}
   m_Layer: 0
   m_Name: SetaCena2
   m_TagString: Untagged
@@ -288,6 +289,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlName: Cena2
   playerStartingPosition: {x: 4.61, y: -4.13}
+  requiresHintButton: 0
+  requiredItem: 0
+  requiresItem: 0
+  blockIfHasItem: 0
+--- !u!114 &32863801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32863796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c9b6700a74d5242b9bc12307725b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: SetaCena2
 --- !u!1 &48104755
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,6 +588,7 @@ GameObject:
   - component: {fileID: 76760060}
   - component: {fileID: 76760059}
   - component: {fileID: 76760058}
+  - component: {fileID: 76760062}
   m_Layer: 0
   m_Name: SetaCena3
   m_TagString: Untagged
@@ -591,6 +610,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlName: Cena3
   playerStartingPosition: {x: 0, y: 0}
+  requiresHintButton: 0
+  requiredItem: 3
+  requiresItem: 1
+  blockIfHasItem: 0
 --- !u!60 &76760059
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -719,6 +742,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1247448751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+--- !u!114 &76760062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76760057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c9b6700a74d5242b9bc12307725b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: SetaCena3
 --- !u!1 &93495318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,6 +1370,7 @@ GameObject:
   - component: {fileID: 435169724}
   - component: {fileID: 435169723}
   - component: {fileID: 435169722}
+  - component: {fileID: 435169726}
   m_Layer: 0
   m_Name: SetaCenaFinal
   m_TagString: Untagged
@@ -1355,6 +1392,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlName: CenaFinal
   playerStartingPosition: {x: 0, y: 0}
+  requiresHintButton: 0
+  requiredItem: 8
+  requiresItem: 1
+  blockIfHasItem: 0
 --- !u!60 &435169723
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1483,6 +1524,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1247448751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+--- !u!114 &435169726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435169721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c9b6700a74d5242b9bc12307725b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: SetaCenaFinal
 --- !u!1 &437981863
 GameObject:
   m_ObjectHideFlags: 0
@@ -6666,11 +6720,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4399714015538418805, guid: 0d58a00b6ab227841960e3b6a9abdbf6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.42
+      value: -5.29
       objectReference: {fileID: 0}
     - target: {fileID: 4399714015538418805, guid: 0d58a00b6ab227841960e3b6a9abdbf6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.72
+      value: -4.71
       objectReference: {fileID: 0}
     - target: {fileID: 4399714015538418805, guid: 0d58a00b6ab227841960e3b6a9abdbf6, type: 3}
       propertyPath: m_LocalPosition.z

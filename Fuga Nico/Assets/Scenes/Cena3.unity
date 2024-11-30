@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 32863798}
   - component: {fileID: 32863797}
   - component: {fileID: 32863800}
+  - component: {fileID: 32863801}
   m_Layer: 0
   m_Name: SetaCena3_1
   m_TagString: Untagged
@@ -283,6 +284,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlName: Cena3_1
   playerStartingPosition: {x: 0, y: 0}
+  requiresHintButton: 0
+  requiredItem: 3
+  requiresItem: 0
+  blockIfHasItem: 1
+--- !u!114 &32863801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32863796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c9b6700a74d5242b9bc12307725b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: SetaCena3_1
 --- !u!1 &48104755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,6 +1332,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlName: Cena1
   playerStartingPosition: {x: -5.18, y: -1.28}
+  requiresHintButton: 0
+  requiredItem: 0
+  requiresItem: 0
+  blockIfHasItem: 0
 --- !u!60 &435169723
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2731,6 +2753,7 @@ GameObject:
   - component: {fileID: 1337298938}
   - component: {fileID: 1337298937}
   - component: {fileID: 1337298936}
+  - component: {fileID: 1337298940}
   m_Layer: 0
   m_Name: SetaCena3_2
   m_TagString: Untagged
@@ -2752,6 +2775,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlName: Cena3_2
   playerStartingPosition: {x: 0, y: 0}
+  requiresHintButton: 0
+  requiredItem: 8
+  requiresItem: 1
+  blockIfHasItem: 0
 --- !u!60 &1337298937
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2880,6 +2907,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 430916928}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1337298940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337298935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c9b6700a74d5242b9bc12307725b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: SetaCena3_2
 --- !u!1 &1346735575
 GameObject:
   m_ObjectHideFlags: 0

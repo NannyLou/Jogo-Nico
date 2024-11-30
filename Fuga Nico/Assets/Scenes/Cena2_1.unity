@@ -288,6 +288,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlName: Cena2
   playerStartingPosition: {x: -5.27, y: -1.66}
+  requiresHintButton: 0
+  requiredItem: 0
+  requiresItem: 0
+  blockIfHasItem: 0
 --- !u!60 &76760059
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4231,11 +4235,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8739573871243930743, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.71
+      value: 4.65
       objectReference: {fileID: 0}
     - target: {fileID: 8739573871243930743, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.56
+      value: -3.38
       objectReference: {fileID: 0}
     - target: {fileID: 8739573871243930743, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
       propertyPath: m_LocalPosition.z

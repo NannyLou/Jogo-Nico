@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6271709412028354010}
   - component: {fileID: 108011415144646023}
   - component: {fileID: 6071899438741454161}
+  - component: {fileID: -7646239085568280570}
   m_Layer: 0
   m_Name: Teo
   m_TagString: NPC
@@ -164,3 +165,17 @@ CircleCollider2D:
   m_Offset: {x: 0.011132956, y: -0.044531025}
   serializedVersion: 2
   m_Radius: 0.52910167
+--- !u!114 &-7646239085568280570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131634402633723919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e61ec1066f5ac4bb640c7b4caff960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySpriteRenderer: {fileID: 2616104350131072453}
+  baseAnimation: {fileID: 11400000, guid: 9dc51699d84574d41bc3d2ec641339d8, type: 2}
