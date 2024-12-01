@@ -1982,6 +1982,58 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.40625, y: 1.09375}
   m_EdgeRadius: 0
+--- !u!1 &704210105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 704210107}
+  - component: {fileID: 704210106}
+  m_Layer: 0
+  m_Name: Dialogo Cena
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &704210106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704210105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2789a08fc25e547b41c195ba8cc7b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: Dialogo_Cena
+  dialogueLines:
+  - 'Telma: Socorro!! Alguem!!!'
+  - 'Nico: Oii, de onde voce esta falando??'
+  - "Telma: \xC9 um milagre, finalmente alguem veio me salvar"
+  - 'Telma: Eu estou presa dentro da casa.'
+  - 'Telma: Se pelo menos tivesse um jeito de DESTRUIR essa porta...'
+  - 'Nico: Calma mulher, eu vou procurar a chave.'
+--- !u!4 &704210107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704210105}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &753263518
 GameObject:
   m_ObjectHideFlags: 0
@@ -4642,6 +4694,7 @@ SceneRoots:
   - {fileID: 93495319}
   - {fileID: 5588636684827020283}
   - {fileID: 541211864}
+  - {fileID: 704210107}
   - {fileID: 590084673}
   - {fileID: 691323840}
   - {fileID: 1701015383}
