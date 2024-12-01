@@ -1,9 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class GaiolaTeoTelma : MonoBehaviour
+public class GaiolaTeo : MonoBehaviour
 {
     public GameObject Teo;
-    public GameObject Telma;
     public Sprite openedGaiolaSprite; // Sprite da gaiola aberta (se tiver)
 
     private bool isOpen = false;
@@ -14,8 +15,6 @@ public class GaiolaTeoTelma : MonoBehaviour
     public string[] dialogLines; // Linhas de diálogo definidas no Unity
 
     public ItemData teoItemData;   // ItemData associado ao Teo
-    public ItemData telmaItemData; // ItemData associado à Telma
-
     public string cadeadoID; // UniqueID do cadeado para verificação no StateManager
 
     private void Awake()
@@ -42,24 +41,15 @@ public class GaiolaTeoTelma : MonoBehaviour
                     Destroy(Teo);
                 }
 
-                if (Telma != null)
-                {
-                    Destroy(Telma);
-                }
-
                 return;
             }
         }
 
-        // Verifica se os itens já estão no inventário
-        if (InventarioManager.instance.HasItem(teoItemData.itemID) && Teo != null)
+        // Verifica se o item já está no inventário
+        if (InventarioManager.instance.HasItem(teoItemData.itemID))
         {
-            Destroy(Teo);
-        }
-
-        if (InventarioManager.instance.HasItem(telmaItemData.itemID) && Telma != null)
-        {
-            Destroy(Telma);
+            if (Teo != null)
+                Destroy(Teo);
         }
 
         dialogueManager = DialogueManager.instance;
@@ -82,7 +72,6 @@ public class GaiolaTeoTelma : MonoBehaviour
             spriteRenderer.enabled = false;
         }
 
-        // Inicia o diálogo
         if (dialogueManager != null)
         {
             if (dialogLines != null && dialogLines.Length > 0)
@@ -109,10 +98,8 @@ public class GaiolaTeoTelma : MonoBehaviour
 
     private void OnDialogueEnd()
     {
-        // Remove o evento para evitar múltiplas chamadas
         dialogueManager.OnDialogueEnd -= OnDialogueEnd;
 
-        // Adiciona Teo ao inventário e destrói o objeto, se existir
         if (Teo != null)
         {
             UniqueID teoUniqueID = Teo.GetComponent<UniqueID>();
@@ -126,21 +113,6 @@ public class GaiolaTeoTelma : MonoBehaviour
             InventarioManager.instance.AddItem(teoItemData);
         }
 
-        // Adiciona Telma ao inventário e destrói o objeto, se existir
-        if (Telma != null)
-        {
-            UniqueID telmaUniqueID = Telma.GetComponent<UniqueID>();
-            if (telmaUniqueID != null && StateManager.instance != null)
-            {
-                StateManager.instance.RegisterDestroyedObject(telmaUniqueID.uniqueID);
-            }
-
-            Destroy(Telma);
-
-            InventarioManager.instance.AddItem(telmaItemData);
-        }
-
-        // Destrói o GameObject da gaiola
         Destroy(gameObject);
     }
 }

@@ -667,6 +667,9 @@ MonoBehaviour:
   - Raleuuu Mufi
   teoItemData: {fileID: 11400000, guid: a350c228a2fbf3c45b2d094ff0105d70, type: 2}
   telmaItemData: {fileID: 11400000, guid: 3d933cddcd42c6c48ab2e36cfb3d588f, type: 2}
+  cadeadoID: cadeadoTeo
+  isTeoScene: 1
+  isTelmaScene: 0
 --- !u!1 &93495318
 GameObject:
   m_ObjectHideFlags: 0
@@ -3454,7 +3457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c9b6700a74d5242b9bc12307725b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: Gaiola_Teo
+  uniqueID: Cadeado_Teo
 --- !u!58 &1864944951
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4144,7 +4147,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 108011415144646023, guid: 2236bc5cfea8ece43bece118f484bf22, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

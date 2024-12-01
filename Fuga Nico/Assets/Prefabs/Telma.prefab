@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8530151020984363524}
   - component: {fileID: 2192597570285934705}
   - component: {fileID: 8007537846636269460}
-  - component: {fileID: 1801495170951951761}
   - component: {fileID: 6704020393169895389}
   m_Layer: 0
   m_Name: Telma
@@ -122,18 +121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueID: Telma
---- !u!114 &1801495170951951761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7968414553819447079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad5620f4bf44cc047b1f8ba259dfaab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6704020393169895389
 MonoBehaviour:
   m_ObjectHideFlags: 0

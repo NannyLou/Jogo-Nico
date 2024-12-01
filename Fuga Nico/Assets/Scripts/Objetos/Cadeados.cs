@@ -8,7 +8,7 @@ public class Cadeados : MonoBehaviour
 
     // Referências às gaiolas que podem ser abertas
     public Gaiola gaiola;               // Gaiola genérica
-    public GaiolaTeoTelma gaiolaTeoTelma; // Gaiola do Teo e Telma
+    public GaiolaTeoTelma gaiolaTeoTelma;
     public GaiolaZeca gaiolaZeca;         // Gaiola do Zeca
 
     private MensagemManager mensagemManager;

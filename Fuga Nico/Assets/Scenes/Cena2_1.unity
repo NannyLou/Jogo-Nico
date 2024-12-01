@@ -776,7 +776,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: f89c64c6231c3be44b0a92239263d06c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1109,6 +1109,9 @@ MonoBehaviour:
   - Raleuuu Mufi
   teoItemData: {fileID: 11400000, guid: a350c228a2fbf3c45b2d094ff0105d70, type: 2}
   telmaItemData: {fileID: 11400000, guid: 3d933cddcd42c6c48ab2e36cfb3d588f, type: 2}
+  cadeadoID: cadeadoTelma
+  isTeoScene: 0
+  isTelmaScene: 1
 --- !u!114 &498110051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1121,7 +1124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c9b6700a74d5242b9bc12307725b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: Gaiola_Teo
+  uniqueID: Porta_Telma
 --- !u!61 &498110052
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1207,7 +1210,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 8
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: ddd547d515fccf449a513cea640d1411, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1788,7 +1791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c9b6700a74d5242b9bc12307725b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: Gaiola_Telma
+  uniqueID: Cadeado_Telma
 --- !u!58 &957348854
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1880,7 +1883,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 10
   m_Sprite: {fileID: -626774426, guid: fa3fb56d4f5896a4abcd90dc8f4676d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4225,9 +4228,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1801495170951951761, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7968414553819447079, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
       propertyPath: m_Name
       value: Telma
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530151020984363524, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8739573871243930743, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
       propertyPath: m_LocalPosition.x

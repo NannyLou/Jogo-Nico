@@ -1656,6 +1656,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 835946392}
+  - component: {fileID: 835946395}
   - component: {fileID: 835946394}
   - component: {fileID: 835946391}
   - component: {fileID: 835946393}
@@ -1791,6 +1792,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredItem: 10
+  dialogLines:
+  - opa1
+  - 'Zeca: Nico, vc precisa se esconder em algum lugar!!'
+  - 'Zeca: Logo o Valdivino vai perceber sua comida queimando.'
+--- !u!114 &835946395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835946390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c9b6700a74d5242b9bc12307725b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: Caldeirao
 --- !u!1 &977833386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2810,6 +2828,7 @@ GameObject:
   - component: {fileID: 1507408110}
   - component: {fileID: 1507408107}
   - component: {fileID: 1507408111}
+  - component: {fileID: 1507408112}
   m_Layer: 0
   m_Name: Vasilha
   m_TagString: Untagged
@@ -2898,6 +2917,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jogador: {fileID: 5588636684827020285}
   vilao: {fileID: 2216310683416073462}
+  caldeiraoUniqueID: {fileID: 835946395}
+  vasilhaUniqueID: {fileID: 1507408112}
 --- !u!61 &1507408111
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2943,6 +2964,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.65, y: 1.52}
   m_EdgeRadius: 0
+--- !u!114 &1507408112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507408106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c9b6700a74d5242b9bc12307725b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: Vasilha
 --- !u!1 &1527707182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4691,6 +4725,8 @@ MonoBehaviour:
   jogador: {fileID: 5588636684827020285}
   jogadorRespawnPoint: {fileID: 977833387}
   waypointIndex: 7
+  phoneUniqueID: {fileID: 2597933010355619953, guid: d84d2f774def4de45ad10fcf92c716e7, type: 3}
+  phoneGameObject: {fileID: 7055017400042683512, guid: d84d2f774def4de45ad10fcf92c716e7, type: 3}
 --- !u!4 &2216310683416073463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8342761903623735175, guid: 229e6405b933e624ab9f370c9f0c211a, type: 3}

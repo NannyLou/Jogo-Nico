@@ -18,6 +18,9 @@ public class GaiolaTeoTelma : MonoBehaviour
 
     public string cadeadoID; // UniqueID do cadeado para verificação no StateManager
 
+    public bool isTeoScene; // Define se este é o cenário de Teo
+    public bool isTelmaScene; // Define se este é o cenário de Telma
+
     private void Awake()
     {
         uniqueID = GetComponent<UniqueID>();
@@ -35,14 +38,17 @@ public class GaiolaTeoTelma : MonoBehaviour
 
             if (gaiolaDestruida || cadeadoDestruido)
             {
+                // Destrói a gaiola
                 Destroy(gameObject);
 
-                if (Teo != null)
+                // Se for o cenário do Teo, destrói apenas o Teo
+                if (isTeoScene && Teo != null)
                 {
                     Destroy(Teo);
                 }
 
-                if (Telma != null)
+                // Se for o cenário da Telma, destrói apenas a Telma
+                if (isTelmaScene && Telma != null)
                 {
                     Destroy(Telma);
                 }
@@ -51,15 +57,16 @@ public class GaiolaTeoTelma : MonoBehaviour
             }
         }
 
-        // Verifica se os itens já estão no inventário
-        if (InventarioManager.instance.HasItem(teoItemData.itemID) && Teo != null)
+        // Verifica se o item já está no inventário
+        if (isTeoScene && InventarioManager.instance.HasItem(teoItemData.itemID))
         {
-            Destroy(Teo);
+            if (Teo != null)
+                Destroy(Teo);
         }
-
-        if (InventarioManager.instance.HasItem(telmaItemData.itemID) && Telma != null)
+        else if (isTelmaScene && InventarioManager.instance.HasItem(telmaItemData.itemID))
         {
-            Destroy(Telma);
+            if (Telma != null)
+                Destroy(Telma);
         }
 
         dialogueManager = DialogueManager.instance;
@@ -79,6 +86,7 @@ public class GaiolaTeoTelma : MonoBehaviour
         }
         else
         {
+            // Se não, desativa o sprite atual para sumir as grades
             spriteRenderer.enabled = false;
         }
 
@@ -112,8 +120,8 @@ public class GaiolaTeoTelma : MonoBehaviour
         // Remove o evento para evitar múltiplas chamadas
         dialogueManager.OnDialogueEnd -= OnDialogueEnd;
 
-        // Adiciona Teo ao inventário e destrói o objeto, se existir
-        if (Teo != null)
+        // Verifica se é o cenário de Teo
+        if (isTeoScene && Teo != null)
         {
             UniqueID teoUniqueID = Teo.GetComponent<UniqueID>();
             if (teoUniqueID != null && StateManager.instance != null)
@@ -123,11 +131,11 @@ public class GaiolaTeoTelma : MonoBehaviour
 
             Destroy(Teo);
 
+            // Adiciona Teo ao inventário
             InventarioManager.instance.AddItem(teoItemData);
         }
-
-        // Adiciona Telma ao inventário e destrói o objeto, se existir
-        if (Telma != null)
+        // Verifica se é o cenário de Telma
+        else if (isTelmaScene && Telma != null)
         {
             UniqueID telmaUniqueID = Telma.GetComponent<UniqueID>();
             if (telmaUniqueID != null && StateManager.instance != null)
@@ -137,6 +145,7 @@ public class GaiolaTeoTelma : MonoBehaviour
 
             Destroy(Telma);
 
+            // Adiciona Telma ao inventário
             InventarioManager.instance.AddItem(telmaItemData);
         }
 

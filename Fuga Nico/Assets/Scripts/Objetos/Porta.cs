@@ -3,61 +3,110 @@ using UnityEngine;
 
 public class Porta : MonoBehaviour
 {
-    public GameObject teoPrefab; // Prefab do Teo, posicionado e desativado na cena
-    public Transform[] waypoints; // Waypoints para o movimento do Teo
-    public float teoSpeed = 2f; // Velocidade do Teo
-    public string[] dialogueLines; // Linhas de diálogo após a destruição
-    private bool isTeoActive = false; // Evita cliques múltiplos
+    public ItemData.items requiredItem = ItemData.items.teo; // Item necessário (Tatu)
+    public Transform waypoint; // Ponto específico onde o Tatu aparecerá
+    public GameObject porta; // Objeto da porta
+    public GameObject seta; // Objeto da seta
+    public GameObject tatuPrefab; // Prefab do Tatu que aparecerá no cenário
+    public AnimationData tatuAnimation; // Animação do Tatu quebrando a porta
 
-    private void OnMouseDown()
+    private GameObject tatuInstance; // Instância do Tatu no cenário
+    private SpriteAnimator tatuAnimator; // Referência ao SpriteAnimator
+
+    private UniqueID uniqueID; // Identificação única para persistir o estado
+
+    private void Awake()
     {
-        // Verifica se o Teo está no inventário e evita múltiplas execuções
-        if (InventarioManager.instance.selectedItemID == ItemData.items.teo && !isTeoActive)
-        {
-            isTeoActive = true;
+        uniqueID = GetComponent<UniqueID>();
+    }
 
-            // Ativa o prefab do Teo
-            if (teoPrefab != null)
+    private void Start()
+    {
+        // Verifica se a porta já foi destruída
+        if (StateManager.instance != null && uniqueID != null)
+        {
+            if (StateManager.instance.IsObjectDestroyed(uniqueID.uniqueID))
             {
-                teoPrefab.SetActive(true);
-                StartCoroutine(MoveTeoAndDestroyPorta());
+                // Se a porta foi destruída anteriormente, desativa a porta e ativa a seta
+                if (porta != null)
+                {
+                    porta.SetActive(false);
+                }
+
+                if (seta != null)
+                {
+                    seta.SetActive(true);
+                }
+
+                // Não precisa continuar, já ajustou o estado
+                return;
             }
         }
-        else
+
+        // Certifique-se de que a seta esteja desativada inicialmente se a porta ainda existe
+        if (seta != null)
         {
-            Debug.Log("Você precisa do Teo para abrir esta porta!");
+            seta.SetActive(false);
         }
     }
 
-    private IEnumerator MoveTeoAndDestroyPorta()
+    private void OnMouseDown()
     {
-        // Move o Teo pelos waypoints
-        foreach (Transform waypoint in waypoints)
+        // Verifica se o item selecionado é o Tatu
+        if (InventarioManager.instance.selectedItemID == requiredItem)
         {
-            while (Vector3.Distance(teoPrefab.transform.position, waypoint.position) > 0.1f)
-            {
-                teoPrefab.transform.position = Vector3.MoveTowards(
-                    teoPrefab.transform.position,
-                    waypoint.position,
-                    teoSpeed * Time.deltaTime
-                );
-                yield return null;
-            }
+            // Remove o Tatu do inventário
+            InventarioManager.instance.collectedItems.RemoveAll(item => item.itemID == requiredItem);
+            InventarioManager.instance.UpdateEquipmentCanvas();
+            InventarioManager.instance.SelectItem(-1);
+
+            // Inicia o processo de animação e manipulação da cena
+            StartCoroutine(QuebrarPortaComTatu());
+        }
+        else
+        {
+            Debug.Log("O item necessário não está selecionado.");
+        }
+    }
+
+    private IEnumerator QuebrarPortaComTatu()
+    {
+        // Instancia o Tatu no waypoint
+        tatuInstance = Instantiate(tatuPrefab, waypoint.position, waypoint.rotation);
+        tatuInstance.transform.position = waypoint.position; // Garantir posição correta
+        tatuInstance.transform.localScale = Vector3.one;     // Garantir escala padrão
+
+        // Obtém o SpriteAnimator do Tatu e inicia a animação
+        tatuAnimator = tatuInstance.GetComponent<SpriteAnimator>();
+        if (tatuAnimator != null && tatuAnimation != null)
+        {
+            tatuAnimator.PlayAnimation(tatuAnimation);
         }
 
-        // Exibe o diálogo
-        if (DialogueManager.instance != null && dialogueLines.Length > 0)
+        // Aguarda 3 segundos enquanto a animação é executada
+        yield return new WaitForSeconds(3);
+
+        // Remove o Tatu da cena
+        if (tatuInstance != null)
         {
-            DialogueManager.instance.StartDialogue(dialogueLines);
+            Destroy(tatuInstance);
         }
 
-        // Desativa o Teo após o movimento
-        if (teoPrefab != null)
+        // Desativa a porta e ativa a seta
+        if (porta != null)
         {
-            teoPrefab.SetActive(false);
+            porta.SetActive(false);
         }
 
-        // Remove a porta
-        Destroy(gameObject);
+        if (seta != null)
+        {
+            seta.SetActive(true);
+        }
+
+        // Registra a porta como destruída no StateManager
+        if (StateManager.instance != null && uniqueID != null)
+        {
+            StateManager.instance.RegisterDestroyedObject(uniqueID.uniqueID);
+        }
     }
 }

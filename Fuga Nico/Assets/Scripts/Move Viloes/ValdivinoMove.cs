@@ -15,6 +15,10 @@ public class ValdivinoMove : MonoBehaviour
     public Transform jogadorRespawnPoint;  // Ponto de respawn do jogador
     public int waypointIndex;              // Índice do waypoint específico para interação (caldeirão)
 
+    [Header("Referências do Celular")]
+    public UniqueID phoneUniqueID;         // Referência ao UniqueID do celular
+    public GameObject phoneGameObject;     // Referência ao GameObject do celular
+
     private int currentWaypointIndex = 0;  // Índice do waypoint atual
     private SpriteAnimator spriteAnimator; // Componente de animação do vilão
     private bool isMoving = false;         // Flag para verificar se o vilão está se movendo
@@ -29,6 +33,26 @@ public class ValdivinoMove : MonoBehaviour
         if (chavePrefab != null && chavePosition != null)
         {
             chaveInstanciada = Instantiate(chavePrefab, chavePosition.position, Quaternion.identity, transform);
+        }
+
+        // Verifica se o celular já foi usado e desativa se necessário
+        if (phoneUniqueID != null && phoneGameObject != null)
+        {
+            if (StateManager.instance.IsObjectDestroyed(phoneUniqueID.uniqueID))
+            {
+                phoneGameObject.SetActive(false);
+                Debug.Log($"Celular com ID {phoneUniqueID.uniqueID} desativado pois já foi usado.");
+                Destroy(gameObject);
+            }
+            else
+            {
+                phoneGameObject.SetActive(true);
+                Debug.Log($"Celular com ID {phoneUniqueID.uniqueID} está ativo.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Referências do celular não estão atribuídas no ValdivinoMove.");
         }
     }
 
@@ -130,7 +154,5 @@ public class ValdivinoMove : MonoBehaviour
         {
             spriteAnimator.PlayAnimation(idleAnimation); // Agora ele vai ficar "parado" quando alcançar o caldeirão
         }
-
-        // O vilão já está segurando a chave, a chave foi instanciada previamente
     }
 }

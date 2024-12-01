@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5185644591661245810}
   - component: {fileID: 60358900647683629}
   - component: {fileID: 5713160540229475027}
+  - component: {fileID: 2597933010355619953}
   m_Layer: 0
   m_Name: Celular
   m_TagString: Untagged
@@ -154,3 +155,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 202716cb0c014384a8fb864433043729, type: 2}
   vilao: {fileID: 0}
+--- !u!114 &2597933010355619953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7055017400042683512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c9b6700a74d5242b9bc12307725b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: Celular
