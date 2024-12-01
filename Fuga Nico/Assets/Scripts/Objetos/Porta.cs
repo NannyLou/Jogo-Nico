@@ -83,7 +83,7 @@ public class Porta : MonoBehaviour
             tatuAnimator.PlayAnimation(tatuAnimation);
         }
 
-        // Aguarda 3 segundos enquanto a animação é executada
+        // Aguarda n segundos enquanto a animação é executada
         yield return new WaitForSeconds(3);
 
         // Remove o Tatu da cena

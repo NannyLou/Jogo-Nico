@@ -288,6 +288,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlName: Cena3
   playerStartingPosition: {x: -3.07, y: 0.16}
+  requiresHintButton: 0
+  requiredItem: 0
+  requiresItem: 0
+  blockIfHasItem: 0
 --- !u!60 &76760059
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1425,6 +1429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 960927376}
   - component: {fileID: 960927375}
+  - component: {fileID: 960927377}
   m_Layer: 0
   m_Name: Daniel
   m_TagString: Untagged
@@ -1472,7 +1477,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 7
   m_Sprite: {fileID: 737983395, guid: 2551861f74f8c2944a6d64fea320ea96, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1499,6 +1504,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 50}
+--- !u!70 &960927377
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960927374}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.002812236, y: 0.0017250481}
+  m_Size: {x: 0.39475653, y: 0.88153034}
+  m_Direction: 0
 --- !u!1 &1092525073
 GameObject:
   m_ObjectHideFlags: 0

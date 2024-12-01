@@ -31,6 +31,9 @@ public class VilaoMovimento : MonoBehaviour
 
     private UniqueID uniqueID; // Identificador único do vilão
 
+    // Referência ao objeto seta
+    public GameObject seta; // Objeto que será ativado ao desaparecer o vilão
+
     private void Awake()
     {
         uniqueID = GetComponent<UniqueID>();
@@ -43,6 +46,11 @@ public class VilaoMovimento : MonoBehaviour
         {
             if (StateManager.instance.IsObjectDestroyed(uniqueID.uniqueID))
             {
+                if (seta != null)
+                {
+                    seta.SetActive(true); // Ativa a seta se o vilão já estiver destruído
+                }
+
                 Destroy(gameObject); // Destrói o vilão imediatamente
                 return;
             }
@@ -68,6 +76,12 @@ public class VilaoMovimento : MonoBehaviour
         }
 
         dialogueManager = DialogueManager.instance;
+
+        // Garante que a seta esteja inicialmente desativada
+        if (seta != null)
+        {
+            seta.SetActive(false);
+        }
     }
 
     private void Update()
@@ -139,6 +153,12 @@ public class VilaoMovimento : MonoBehaviour
             if (StateManager.instance != null && uniqueID != null)
             {
                 StateManager.instance.RegisterDestroyedObject(uniqueID.uniqueID);
+            }
+
+            // Ativa a seta antes de destruir o vilão
+            if (seta != null)
+            {
+                seta.SetActive(true);
             }
 
             Destroy(gameObject);

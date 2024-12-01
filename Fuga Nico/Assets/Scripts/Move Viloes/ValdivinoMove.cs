@@ -27,7 +27,6 @@ public class ValdivinoMove : MonoBehaviour
     private void Start()
     {
         spriteAnimator = GetComponent<SpriteAnimator>();
-        // Não inicie a animação de "parado" aqui! Deixe isso para o momento em que o vilão atingir o caldeirão.
 
         // Instancia a chave na posição definida
         if (chavePrefab != null && chavePosition != null)
@@ -41,50 +40,24 @@ public class ValdivinoMove : MonoBehaviour
             if (StateManager.instance.IsObjectDestroyed(phoneUniqueID.uniqueID))
             {
                 phoneGameObject.SetActive(false);
-                Debug.Log($"Celular com ID {phoneUniqueID.uniqueID} desativado pois já foi usado.");
                 Destroy(gameObject);
             }
             else
             {
                 phoneGameObject.SetActive(true);
-                Debug.Log($"Celular com ID {phoneUniqueID.uniqueID} está ativo.");
             }
-        }
-        else
-        {
-            Debug.LogWarning("Referências do celular não estão atribuídas no ValdivinoMove.");
         }
     }
 
     private void Update()
     {
-        // Verifica se o jogador está presente no cenário
-        if (jogador != null)
-        {
-            if (jogador.activeSelf)
-            {
-                // Jogador está no cenário, vilão fica parado com animação normal
-                // Não altere a animação aqui; deixe o vilão em seu estado atual
-            }
-            else
-            {
-                // Jogador desapareceu, vilão começa a se mover
-                if (!isMoving)
-                {
-                    StartMoving(); // Inicia o movimento
-                }
-            }
-        }
-
         if (isMoving)
         {
             MoveAlongPath();
         }
 
-        // Atualiza a posição da chave
         UpdateKeyPosition();
     }
-
 
     private void MoveAlongPath()
     {
@@ -99,7 +72,6 @@ public class ValdivinoMove : MonoBehaviour
             {
                 currentWaypointIndex++;
 
-                // Verifica se o vilão chegou no waypoint desejado (caldeirão)
                 if (currentWaypointIndex == waypointIndex)
                 {
                     OnReachWaypoint();
@@ -131,10 +103,9 @@ public class ValdivinoMove : MonoBehaviour
             isMoving = true;
             currentWaypointIndex = 0;
 
-            // Inicia a animação de caminhada
             if (spriteAnimator != null && walkAnimation != null)
             {
-                spriteAnimator.PlayAnimation(walkAnimation); // Começa a animação de caminhada
+                spriteAnimator.PlayAnimation(walkAnimation);
             }
         }
     }
@@ -143,16 +114,27 @@ public class ValdivinoMove : MonoBehaviour
     {
         if (jogador != null && jogadorRespawnPoint != null)
         {
+            ClickMove clickMove = FindObjectOfType<ClickMove>();
+            if (clickMove != null)
+            {
+                Debug.Log("ClickMove encontrado via FindObjectOfType. Chamando StopPlayerMovement.");
+                clickMove.StopPlayerMovement(); // Interrompe o movimento pendente do jogador
+            }
+            else
+            {
+                Debug.LogWarning("ClickMove não encontrado via FindObjectOfType.");
+            }
+
             jogador.transform.position = jogadorRespawnPoint.position;
-            jogador.SetActive(true); // Reativa o jogador
+            jogador.SetActive(true); // Reativa o jogador no cenário
         }
 
-        isMoving = false; // O vilão para de se mover
+        isMoving = false;
 
-        // Altera a animação do vilão para parado (segurando a chave)
         if (spriteAnimator != null && idleAnimation != null)
         {
-            spriteAnimator.PlayAnimation(idleAnimation); // Agora ele vai ficar "parado" quando alcançar o caldeirão
+            spriteAnimator.PlayAnimation(idleAnimation);
         }
     }
+
 }

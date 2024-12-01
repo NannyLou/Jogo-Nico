@@ -1110,8 +1110,6 @@ MonoBehaviour:
   teoItemData: {fileID: 11400000, guid: a350c228a2fbf3c45b2d094ff0105d70, type: 2}
   telmaItemData: {fileID: 11400000, guid: 3d933cddcd42c6c48ab2e36cfb3d588f, type: 2}
   cadeadoID: cadeadoTelma
-  isTeoScene: 0
-  isTelmaScene: 1
 --- !u!114 &498110051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4295,10 +4293,10 @@ SceneRoots:
   - {fileID: 5588636684827020283}
   - {fileID: 8849168233708495676}
   - {fileID: 541211864}
-  - {fileID: 8240898795266765518}
   - {fileID: 957348857}
   - {fileID: 498110054}
   - {fileID: 167718081}
+  - {fileID: 8240898795266765518}
   - {fileID: 1701015383}
   - {fileID: 1984059180}
   - {fileID: 1092525077}

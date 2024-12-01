@@ -1847,7 +1847,7 @@ GameObject:
   - component: {fileID: 691323838}
   - component: {fileID: 691323841}
   m_Layer: 0
-  m_Name: CelularObj
+  m_Name: Celular Obj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2092,7 +2092,7 @@ Transform:
   m_GameObject: {fileID: 897676821}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.93, y: -1.9, z: 0}
+  m_LocalPosition: {x: -5.93, y: -1.521, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4643,9 +4643,9 @@ SceneRoots:
   - {fileID: 5588636684827020283}
   - {fileID: 541211864}
   - {fileID: 590084673}
+  - {fileID: 691323840}
   - {fileID: 1701015383}
   - {fileID: 1984059180}
   - {fileID: 1092525077}
   - {fileID: 897676822}
   - {fileID: 1880367935}
-  - {fileID: 691323840}
