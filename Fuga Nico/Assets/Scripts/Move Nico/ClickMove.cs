@@ -27,6 +27,12 @@ public class ClickMove : MonoBehaviour
 
     public void Update()
     {
+        // Impede o movimento se o diálogo estiver ativo
+        if (DialogueManager.instance != null && !DialogueManager.instance.CanPlayerMove)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonUp(0))
         {
             // Verifica se o clique foi em um obstáculo

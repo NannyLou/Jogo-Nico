@@ -1106,7 +1106,15 @@ MonoBehaviour:
   openedGaiolaSprite: {fileID: 0}
   dialogLines:
   - opa1
-  - Raleuuu Mufi
+  - 'Telma: Finalmente liberdadee!!'
+  - 'Nico: Finalmente estamos todos juntos!'
+  - 'Teo: Vamos fugir daqui!!'
+  - 'Nico: Quase la, precisamos da chave final para fugir-mos'
+  - 'Teo: Mas ela esta na cozinha e o Valdevino tambem'
+  - "Telma: Ele n\xE3o cairia no mesmo truque duas vezes."
+  - 'Zeca: E se nos usarmos o telefone do Daniel para eu ligar para o Valdivino'
+  - 'Zeca: E fingir ser o Daniel.'
+  - "Nico: Otima Ideia, vamos ligar l\xE1 fora!"
   teoItemData: {fileID: 11400000, guid: a350c228a2fbf3c45b2d094ff0105d70, type: 2}
   telmaItemData: {fileID: 11400000, guid: 3d933cddcd42c6c48ab2e36cfb3d588f, type: 2}
   cadeadoID: cadeadoTelma
@@ -4229,6 +4237,34 @@ PrefabInstance:
     - target: {fileID: 1801495170951951761, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704020393169895389, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
+      propertyPath: dialogueLinesWhenTrapped.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704020393169895389, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
+      propertyPath: dialogueLinesWhenTrapped.Array.data[1]
+      value: "Telma: Finalmente voc\xEA conseguiu entrar!!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704020393169895389, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
+      propertyPath: dialogueLinesWhenTrapped.Array.data[2]
+      value: 'Teo: Telma, nos viemos lhe salvar.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704020393169895389, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
+      propertyPath: dialogueLinesWhenTrapped.Array.data[3]
+      value: 'Nico: Poxa, ainda tem um cadeado lhe prendendo aqui...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704020393169895389, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
+      propertyPath: dialogueLinesWhenTrapped.Array.data[4]
+      value: 'Telma: Eles me prenderam a 4 chaves.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704020393169895389, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
+      propertyPath: dialogueLinesWhenTrapped.Array.data[5]
+      value: "Telma: S\xF3 por que minha especie esta em extin\xE7\xE3o."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704020393169895389, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
+      propertyPath: dialogueLinesWhenTrapped.Array.data[6]
+      value: 'Nico: Cruel.'
       objectReference: {fileID: 0}
     - target: {fileID: 7968414553819447079, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
       propertyPath: m_Name

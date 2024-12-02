@@ -664,7 +664,9 @@ MonoBehaviour:
   openedGaiolaSprite: {fileID: 0}
   dialogLines:
   - opa1
-  - Raleuuu Mufi
+  - 'Teo: Valeuu Nico.'
+  - 'Teo: To doidinho pra sair destruindo tudo no meu caminho.'
+  - "Teo: N\xE3o aguentava mais ficar preso."
   teoItemData: {fileID: 11400000, guid: a350c228a2fbf3c45b2d094ff0105d70, type: 2}
   telmaItemData: {fileID: 11400000, guid: 3d933cddcd42c6c48ab2e36cfb3d588f, type: 2}
   cadeadoID: cadeadoTeo
@@ -4101,6 +4103,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1957457143917914, guid: 2236bc5cfea8ece43bece118f484bf22, type: 3}
+      propertyPath: dialogueLinesWhenTrapped.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957457143917914, guid: 2236bc5cfea8ece43bece118f484bf22, type: 3}
+      propertyPath: dialogueLinesWhenTrapped.Array.data[1]
+      value: 'Teo: Socorro Nico!!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957457143917914, guid: 2236bc5cfea8ece43bece118f484bf22, type: 3}
+      propertyPath: dialogueLinesWhenTrapped.Array.data[2]
+      value: 'Teo: Me prenderam nessa gaiola insalubre'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957457143917914, guid: 2236bc5cfea8ece43bece118f484bf22, type: 3}
+      propertyPath: dialogueLinesWhenTrapped.Array.data[3]
+      value: 'Teo: Eu quero sair *Buaaa*'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957457143917914, guid: 2236bc5cfea8ece43bece118f484bf22, type: 3}
+      propertyPath: dialogueLinesWhenTrapped.Array.data[4]
+      value: 'Nico: Calma meu fi, eu vou achar a chave e lhe libertar!'
+      objectReference: {fileID: 0}
     - target: {fileID: 131634402633723919, guid: 2236bc5cfea8ece43bece118f484bf22, type: 3}
       propertyPath: m_Name
       value: Teo

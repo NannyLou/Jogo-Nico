@@ -4,16 +4,17 @@ using UnityEngine;
 using TMPro;
 using System;
 
-
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
+
     public event Action OnDialogueEnd;
     public GameObject dialogPanel;        // Painel do diálogo
     public TextMeshProUGUI dialogText;    // Texto do diálogo
 
     private Queue<string> sentences;      // Fila de frases do diálogo
     private bool isDialogueActive = false; // Controla se o diálogo está ativo
+    public bool CanPlayerMove { get; private set; } = true; // Controla se o jogador pode se mover
 
     private void Awake()
     {
@@ -42,6 +43,7 @@ public class DialogueManager : MonoBehaviour
             return;
 
         isDialogueActive = true;
+        CanPlayerMove = false; // Impede o movimento do jogador enquanto o diálogo está ativo
 
         // Ativa o painel e o texto do diálogo no início do diálogo
         dialogPanel.SetActive(true);
@@ -87,13 +89,15 @@ public class DialogueManager : MonoBehaviour
         dialogText.gameObject.SetActive(false);
         isDialogueActive = false;
 
+        // Permite que o jogador volte a se mover
+        CanPlayerMove = true;
+
         // Invoca o evento de fim de diálogo
         if (OnDialogueEnd != null)
         {
             OnDialogueEnd.Invoke();
         }
     }
-
 
     void Update()
     {
