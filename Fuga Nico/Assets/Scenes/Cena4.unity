@@ -970,6 +970,56 @@ RectTransform:
   m_AnchoredPosition: {x: -960.36, y: -536.49}
   m_SizeDelta: {x: 24, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &191804168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 191804170}
+  - component: {fileID: 191804169}
+  m_Layer: 0
+  m_Name: Dialogo Cena
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &191804169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191804168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2789a08fc25e547b41c195ba8cc7b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: DialogoCena4
+  dialogueLines:
+  - 'Teo: Socorro Nico!!'
+  - 'Teo: Me prenderam nessa gaiola insalubre'
+  - 'Teo: Eu quero sair *Buaaa*'
+  - 'Nico: Calma meu fi, eu vou achar a chave e lhe libertar!'
+--- !u!4 &191804170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191804168}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &264721955
 GameObject:
   m_ObjectHideFlags: 0
@@ -4317,3 +4367,4 @@ SceneRoots:
   - {fileID: 1984059180}
   - {fileID: 1092525077}
   - {fileID: 32863799}
+  - {fileID: 191804170}

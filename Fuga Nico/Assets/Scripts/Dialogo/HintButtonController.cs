@@ -235,6 +235,11 @@ public class HintButtonController : MonoBehaviour
                 dialogueLines.Add("Zeca: A Telma deve conseguir alcançar a chave com a lingua");
                 hasAnyItem = true;
             }
+            if (InventarioManager.instance.HasItem(ItemData.items.celular))
+            {
+                dialogueLines.Add("Zeca: Olha esse pote perto da entrada! Um otimo esconderijo");
+                hasAnyItem = true;
+            }
             if (!hasAnyItem)
             {
                 dialogueLines.Add("Zeca: Deve ter algo para pegar aqui...");

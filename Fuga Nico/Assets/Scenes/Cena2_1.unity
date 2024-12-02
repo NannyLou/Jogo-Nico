@@ -803,6 +803,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &262108752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 262108754}
+  - component: {fileID: 262108753}
+  m_Layer: 0
+  m_Name: Dialogo Cena
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &262108753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262108752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2789a08fc25e547b41c195ba8cc7b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: DialogoCena2_1
+  dialogueLines:
+  - "Telma: Finalmente voc\xEA conseguiu entrar!!"
+  - 'Teo: Telma, nos viemos lhe salvar.'
+  - 'Nico: Poxa, ainda tem um cadeado lhe prendendo aqui...'
+  - 'Telma: Eles me prenderam a quatro chaves.'
+  - "Telma: S\xF3 por que minha especie esta em extin\xE7\xE3o."
+  - 'Nico: Cruel.'
+--- !u!4 &262108754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262108752}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &264721955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,6 +1167,7 @@ MonoBehaviour:
   - 'Zeca: E se nos usarmos o telefone do Daniel para eu ligar para o Valdivino'
   - 'Zeca: E fingir ser o Daniel.'
   - "Nico: Otima Ideia, vamos ligar l\xE1 fora!"
+  - 'Nico: Ligar perto da casa seria arriscado.'
   teoItemData: {fileID: 11400000, guid: a350c228a2fbf3c45b2d094ff0105d70, type: 2}
   telmaItemData: {fileID: 11400000, guid: 3d933cddcd42c6c48ab2e36cfb3d588f, type: 2}
   cadeadoID: cadeadoTelma
@@ -4337,3 +4390,4 @@ SceneRoots:
   - {fileID: 1984059180}
   - {fileID: 1092525077}
   - {fileID: 76760061}
+  - {fileID: 262108754}
