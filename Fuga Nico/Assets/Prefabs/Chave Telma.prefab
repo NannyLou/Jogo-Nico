@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3941630249289845990
+--- !u!1 &2331541452833575847
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4660454614658666370}
-  - component: {fileID: 815104679558468816}
-  - component: {fileID: 380150200421399778}
-  - component: {fileID: 3240355742625873658}
+  - component: {fileID: 6216504111008452803}
+  - component: {fileID: 2136925218096155537}
+  - component: {fileID: 1418255500541977507}
+  - component: {fileID: 4183906914682921403}
   m_Layer: 0
   m_Name: Chave Telma
   m_TagString: Untagged
@@ -19,28 +19,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4660454614658666370
+--- !u!4 &6216504111008452803
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3941630249289845990}
+  m_GameObject: {fileID: 2331541452833575847}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: 0.39479524, y: -4.1222687, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4530904, y: -4.3821597, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
---- !u!212 &815104679558468816
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2136925218096155537
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3941630249289845990}
+  m_GameObject: {fileID: 2331541452833575847}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -86,13 +86,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &380150200421399778
+--- !u!114 &1418255500541977507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3941630249289845990}
+  m_GameObject: {fileID: 2331541452833575847}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5fcbb7839f2d8e4ea2d50f770462862, type: 3}
@@ -100,13 +100,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 9a2530ab270198c48898af985344a1d4, type: 2}
   vilao: {fileID: 0}
---- !u!60 &3240355742625873658
+--- !u!60 &4183906914682921403
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3941630249289845990}
+  m_GameObject: {fileID: 2331541452833575847}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -144,20 +144,23 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.17896737, y: 0.51809144}
-      - {x: -0.31488514, y: 0.48583308}
-      - {x: -0.46277094, y: 0.31909794}
-      - {x: -0.49137795, y: 0.19870785}
-      - {x: -0.46543762, y: 0.060958147}
-      - {x: -0.37525985, y: -0.09869605}
-      - {x: -0.2330767, y: -0.26723278}
-      - {x: -0.07070798, y: -0.40275323}
-      - {x: 0.13976288, y: -0.4774475}
-      - {x: 0.2681461, y: -0.45512578}
-      - {x: 0.37785333, y: -0.40199864}
-      - {x: 0.45277265, y: -0.31695706}
-      - {x: 0.4634472, y: -0.17789221}
-      - {x: 0.45250475, y: 0.040459156}
-      - {x: 0.31602287, y: 0.20135838}
-      - {x: 0.0025268756, y: 0.47306436}
+    - - {x: 0.26067972, y: 0.47357845}
+      - {x: 0.16180491, y: 0.48719501}
+      - {x: 0.02173829, y: 0.46220016}
+      - {x: -0.16994643, y: 0.3087511}
+      - {x: -0.38688993, y: 0.09412575}
+      - {x: -0.50629044, y: -0.08421612}
+      - {x: -0.5196402, y: -0.18141651}
+      - {x: -0.5136006, y: -0.25693703}
+      - {x: -0.47715116, y: -0.35324287}
+      - {x: -0.42219448, y: -0.41312504}
+      - {x: -0.28045583, y: -0.49678516}
+      - {x: -0.14032245, y: -0.49893665}
+      - {x: 0.0075752735, y: -0.46485233}
+      - {x: 0.16155243, y: -0.3360958}
+      - {x: 0.36332774, y: -0.15948391}
+      - {x: 0.4505961, y: -0.021064758}
+      - {x: 0.4899242, y: 0.117791176}
+      - {x: 0.44631815, y: 0.31670856}
+      - {x: 0.3702376, y: 0.424757}
   m_UseDelaunayMesh: 0

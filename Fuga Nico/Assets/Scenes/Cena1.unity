@@ -2114,7 +2114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 578824508}
   m_Layer: 0
-  m_Name: Gaiolas
+  m_Name: Gaiolas Animais
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2618,7 +2618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 843338506}
   m_Layer: 0
-  m_Name: Cadeados
+  m_Name: Cadeados Animais
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2809,7 +2809,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.06999999
+  m_Radius: 0.1789121
 --- !u!212 &1021760651
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2871,8 +2871,8 @@ Transform:
   m_GameObject: {fileID: 1021760649}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.66, y: -1.99, z: 0}
-  m_LocalScale: {x: 6.6144, y: 6.6144, z: 6.6144}
+  m_LocalPosition: {x: 8.57, y: -2.21, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -6939,6 +6939,8 @@ SceneRoots:
   - {fileID: 541211864}
   - {fileID: 578824508}
   - {fileID: 843338506}
+  - {fileID: 1706564467}
+  - {fileID: 1021760652}
   - {fileID: 1701015383}
   - {fileID: 675692513}
   - {fileID: 2035149636}
@@ -6946,5 +6948,3 @@ SceneRoots:
   - {fileID: 1092525077}
   - {fileID: 1801067203}
   - {fileID: 1247448751}
-  - {fileID: 1706564467}
-  - {fileID: 1021760652}

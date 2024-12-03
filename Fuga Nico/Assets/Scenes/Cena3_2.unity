@@ -147,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 4984275}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.11, y: -3.47, z: 0}
+  m_LocalPosition: {x: -3.11, y: -3.572, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -229,7 +229,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 2.3148892, y: -5.219211}
+    - - {x: 2.323432, y: -5.425102}
       - {x: -5.2501345, y: -5.3969584}
       - {x: -5.2476254, y: -5.9413753}
       - {x: 12.312547, y: -6.0017557}
@@ -1131,8 +1131,8 @@ MonoBehaviour:
   lvlName: Cena3
   playerStartingPosition: {x: -5.77, y: -3.78}
   requiresHintButton: 0
-  requiredItem: 0
-  requiresItem: 0
+  requiredItem: 4
+  requiresItem: 1
   blockIfHasItem: 0
 --- !u!60 &435169723
 PolygonCollider2D:
@@ -1944,7 +1944,7 @@ Transform:
   m_GameObject: {fileID: 1084805380}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -3.46, z: 0}
+  m_LocalPosition: {x: -2, y: -3.553, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3485,7 +3485,7 @@ Transform:
   m_GameObject: {fileID: 1653459370}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.23, y: -3.52, z: 0}
+  m_LocalPosition: {x: -4.799, y: -3.528, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3654,7 +3654,7 @@ Transform:
   m_GameObject: {fileID: 1664036829}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.09, y: -3.43, z: 0}
+  m_LocalPosition: {x: -4.09, y: -3.523, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4360,7 +4360,7 @@ Transform:
   m_GameObject: {fileID: 1993807857}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.206, y: -0.254, z: 0}
+  m_LocalPosition: {x: 0.138, y: -0.224, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4770,7 +4770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5975629091847871642, guid: 229e6405b933e624ab9f370c9f0c211a, type: 3}
       propertyPath: m_Offset.x
-      value: 0.06844068
+      value: -0.06844068
       objectReference: {fileID: 0}
     - target: {fileID: 5975629091847871642, guid: 229e6405b933e624ab9f370c9f0c211a, type: 3}
       propertyPath: m_Offset.y
@@ -4856,7 +4856,7 @@ MonoBehaviour:
   speed: 3
   walkAnimation: {fileID: 11400000, guid: 5d13c3b30c38b8d43a82668822f51302, type: 2}
   idleAnimation: {fileID: 11400000, guid: bdd5886c0123b0d43b9e58dab127afc7, type: 2}
-  chavePrefab: {fileID: 3941630249289845990, guid: 861ece03e75b01c40a4d2eec5118e597, type: 3}
+  chavePrefab: {fileID: 2331541452833575847, guid: 861ece03e75b01c40a4d2eec5118e597, type: 3}
   chavePosition: {fileID: 1993807858}
   jogador: {fileID: 5588636684827020285}
   jogadorRespawnPoint: {fileID: 977833387}
