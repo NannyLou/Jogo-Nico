@@ -2209,6 +2209,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120791288}
   m_CullTransparentMesh: 0
+--- !u!1 &1161437464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161437465}
+  m_Layer: 0
+  m_Name: Posicao Chave Saida
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1161437465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161437464}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: 0.34202027, w: -0.9396926}
+  m_LocalPosition: {x: -0.07, y: -3.49, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 320}
 --- !u!1 &1188031029
 GameObject:
   m_ObjectHideFlags: 0
@@ -4057,6 +4088,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1320753277}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1860402057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1860402058}
+  m_Layer: 0
+  m_Name: Posicao Telma
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1860402058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860402057}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.73, y: -3.54, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1909802947
 GameObject:
   m_ObjectHideFlags: 0
@@ -4746,8 +4808,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6794031641368908063, guid: 8b3fa6ba59675774eb56abed07b6d017, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 607982406590576403}
   m_SourcePrefab: {fileID: 100100000, guid: 8b3fa6ba59675774eb56abed07b6d017, type: 3}
+--- !u!1 &607982406590576402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6794031641368908063, guid: 8b3fa6ba59675774eb56abed07b6d017, type: 3}
+  m_PrefabInstance: {fileID: 607982406590576401}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &607982406590576403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607982406590576402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879ce42e245c44d41963ac73a144b6fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredItem: 7
+  telmaWaypoint: {fileID: 1860402058}
+  chaveWaypoint: {fileID: 1161437465}
+  telmaPrefab: {fileID: 7968414553819447079, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
+  chavePrefab: {fileID: 607982406590576402}
+  telmaAnimation: {fileID: 11400000, guid: 08d77e7e235a9544580bf3347bc0b551, type: 2}
 --- !u!1001 &2216310683416073460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4960,5 +5048,7 @@ SceneRoots:
   - {fileID: 1984059180}
   - {fileID: 1092525077}
   - {fileID: 977833387}
+  - {fileID: 1860402058}
+  - {fileID: 1161437465}
   - {fileID: 1320753277}
   - {fileID: 435169725}

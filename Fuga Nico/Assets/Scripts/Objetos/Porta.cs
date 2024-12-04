@@ -15,9 +15,12 @@ public class Porta : MonoBehaviour
 
     private UniqueID uniqueID; // Identificação única para persistir o estado
 
+    private ClickMove clickMove; // Referência ao ClickMove
+
     private void Awake()
     {
         uniqueID = GetComponent<UniqueID>();
+        clickMove = FindObjectOfType<ClickMove>(); // Inicializa a referência
     }
 
     private void Start()
@@ -71,6 +74,13 @@ public class Porta : MonoBehaviour
 
     private IEnumerator QuebrarPortaComTatu()
     {
+        // Desabilita o movimento do personagem
+        if (clickMove != null)
+        {
+            clickMove.DisableMovement();
+            Debug.Log("Iniciando animação do Tatu. Movimento desabilitado.");
+        }
+
         // Instancia o Tatu no waypoint
         tatuInstance = Instantiate(tatuPrefab, waypoint.position, waypoint.rotation);
         tatuInstance.transform.position = waypoint.position; // Garantir posição correta
@@ -84,7 +94,7 @@ public class Porta : MonoBehaviour
         }
 
         // Aguarda n segundos enquanto a animação é executada
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(3); // Ajuste conforme necessário
 
         // Remove o Tatu da cena
         if (tatuInstance != null)
@@ -107,6 +117,13 @@ public class Porta : MonoBehaviour
         if (StateManager.instance != null && uniqueID != null)
         {
             StateManager.instance.RegisterDestroyedObject(uniqueID.uniqueID);
+        }
+
+        // Reabilita o movimento do personagem
+        if (clickMove != null)
+        {
+            clickMove.EnableMovement();
+            Debug.Log("Animação concluída. Movimento habilitado.");
         }
     }
 }

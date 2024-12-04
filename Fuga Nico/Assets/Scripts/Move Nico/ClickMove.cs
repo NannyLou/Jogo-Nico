@@ -10,6 +10,8 @@ public class ClickMove : MonoBehaviour
     Camera myCamera;
     Coroutine goToClickCoroutine;
 
+    private bool canMove = true; // Nova flag para controlar o movimento
+
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -19,16 +21,13 @@ public class ClickMove : MonoBehaviour
         if (GameManager.playerStartPosition != Vector2.zero)
         {
             player.position = GameManager.playerStartPosition;
-
-            // Opcional: Reseta a posição inicial no GameManager
-            // GameManager.playerStartPosition = Vector2.zero;
         }
     }
 
     public void Update()
     {
-        // Impede o movimento se o diálogo estiver ativo
-        if (DialogueManager.instance != null && !DialogueManager.instance.CanPlayerMove)
+        // Impede o movimento se canMove for false ou se o DialogueManager bloquear o movimento
+        if (!canMove || (DialogueManager.instance != null && !DialogueManager.instance.CanPlayerMove))
         {
             return;
         }
@@ -64,7 +63,6 @@ public class ClickMove : MonoBehaviour
         playerWalking = false;
         player.GetComponent<SpriteAnimator>().PlayAnimation(null); // Interrompe a animação de caminhada
     }
-
 
     public IEnumerator GoToClick(Vector2 mousePos)
     {
@@ -127,5 +125,19 @@ public class ClickMove : MonoBehaviour
         player.GetComponent<SpriteAnimator>().PlayAnimation(null);
         goToClickCoroutine = null;
         yield return null;
+    }
+
+    // Novos métodos para controlar o movimento externamente
+    public void DisableMovement()
+    {
+        canMove = false;
+        StopPlayerMovement(); // Opcional: interrompe qualquer movimento atual
+        Debug.Log("Movimento do personagem desabilitado.");
+    }
+
+    public void EnableMovement()
+    {
+        canMove = true;
+        Debug.Log("Movimento do personagem habilitado.");
     }
 }

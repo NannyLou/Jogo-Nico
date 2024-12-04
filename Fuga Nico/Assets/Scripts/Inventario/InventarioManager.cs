@@ -49,6 +49,11 @@ private void Awake()
     }
     else
     {
+        // Se já existir uma instância, destrua o Canvas duplicado e este GameObject
+        if (equipmentCanvas != null)
+        {
+            Destroy(equipmentCanvas);
+        }
         Destroy(gameObject);
     }
 }
