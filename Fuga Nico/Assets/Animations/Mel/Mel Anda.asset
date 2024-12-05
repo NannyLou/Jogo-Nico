@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ba4f0597d8f2d1468da023afd04b4fb, type: 3}
-  m_Name: Telma Lingua
+  m_Name: Mel Anda
   m_EditorClassIdentifier: 
   framesOfGap: 9
   sprites:
-  - {fileID: -107226957, guid: 91c8aeb19c6399b4eb8e023a689e2b4c, type: 3}
-  - {fileID: 1303098901, guid: 91c8aeb19c6399b4eb8e023a689e2b4c, type: 3}
-  - {fileID: -1087566551, guid: 91c8aeb19c6399b4eb8e023a689e2b4c, type: 3}
-  - {fileID: -1248639353, guid: 91c8aeb19c6399b4eb8e023a689e2b4c, type: 3}
+  - {fileID: -1345608475, guid: bc8224d8b373c6c4f95fb919c9de54ec, type: 3}
+  - {fileID: 1994398052, guid: bc8224d8b373c6c4f95fb919c9de54ec, type: 3}
+  - {fileID: 1863802182, guid: bc8224d8b373c6c4f95fb919c9de54ec, type: 3}
   loop: 1

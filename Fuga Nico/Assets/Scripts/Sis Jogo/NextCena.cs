@@ -10,6 +10,7 @@ public class NextCena : MonoBehaviour
     [Header("Condições de Acesso")]
     public bool requiresHintButton; // Se a seta requer que o HintButton esteja ativo
     public ItemData.items requiredItem; // Item necessário no inventário (opcional)
+    public ItemData.items[] alternativeItems; // Lista de itens alternativos
     public bool requiresItem = false; // Define se é necessário verificar o inventário
     public bool blockIfHasItem = false; // Bloqueia se o jogador tiver o item no inventário
 
@@ -68,45 +69,62 @@ public class NextCena : MonoBehaviour
         }
     }
 
-    private bool CheckAccessConditions()
+   private bool CheckAccessConditions()
+{
+    // Verifica se o HintButton está ativo, se necessário
+    if (requiresHintButton)
     {
-        // Verifica se o HintButton está ativo, se necessário
-        if (requiresHintButton)
+        HintButtonController hintButtonController = FindObjectOfType<HintButtonController>();
+        if (hintButtonController == null || !hintButtonController.gameObject.activeInHierarchy)
         {
-            HintButtonController hintButtonController = FindObjectOfType<HintButtonController>();
-            if (hintButtonController == null || !hintButtonController.gameObject.activeInHierarchy)
-            {
-                Debug.Log("HintButton não está ativo.");
-                return false;
-            }
+            Debug.Log("HintButton não está ativo.");
+            return false;
         }
-
-        // Verifica se o jogador possui o item necessário
-        if (requiresItem)
-        {
-            if (InventarioManager.instance == null || 
-                !InventarioManager.instance.HasItem(requiredItem))
-            {
-                Debug.Log("Item necessário não encontrado no inventário.");
-                return false;
-            }
-        }
-
-        // Verifica se o jogador **não deve ter** um item
-        if (blockIfHasItem)
-        {
-            if (InventarioManager.instance != null && 
-                InventarioManager.instance.HasItem(requiredItem))
-            {
-                Debug.Log("O jogador possui o item bloqueador.");
-                return false;
-            }
-        }
-
-        // Todas as condições foram atendidas
-        return true;
     }
 
+    // Verifica se o jogador possui o item necessário ou um item alternativo
+    if (requiresItem)
+    {
+        // Linha nova: Verifica o item principal
+        bool hasRequiredItem = InventarioManager.instance != null &&
+                               InventarioManager.instance.HasItem(requiredItem);
+
+        // Linhas novas: Verifica itens alternativos
+        bool hasAlternativeItem = false;
+        if (alternativeItems != null && alternativeItems.Length > 0)
+        {
+            foreach (var item in alternativeItems)
+            {
+                if (InventarioManager.instance != null && InventarioManager.instance.HasItem(item))
+                {
+                    hasAlternativeItem = true;
+                    break;
+                }
+            }
+        }
+
+        // Linha nova: Combina condições para determinar acesso
+        if (!hasRequiredItem && !hasAlternativeItem)
+        {
+            Debug.Log("Nenhum dos itens necessários foi encontrado no inventário.");
+            return false;
+        }
+    }
+
+    // Verifica se o jogador **não deve ter** um item
+    if (blockIfHasItem)
+    {
+        if (InventarioManager.instance != null && 
+            InventarioManager.instance.HasItem(requiredItem))
+        {
+            Debug.Log("O jogador possui o item bloqueador.");
+            return false;
+        }
+    }
+
+    // Todas as condições foram atendidas
+    return true;
+}
     private void LoadScene()
     {
         // Define a posição inicial no GameManager

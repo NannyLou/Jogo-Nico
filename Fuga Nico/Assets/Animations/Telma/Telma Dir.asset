@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ba4f0597d8f2d1468da023afd04b4fb, type: 3}
-  m_Name: Teo Esq
+  m_Name: Telma Dir
   m_EditorClassIdentifier: 
   framesOfGap: 0
   sprites:
-  - {fileID: -641891348, guid: e246a3d0021e4424582c251e97540931, type: 3}
+  - {fileID: -436673178, guid: 91c8aeb19c6399b4eb8e023a689e2b4c, type: 3}
   loop: 0

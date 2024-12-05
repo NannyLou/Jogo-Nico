@@ -291,6 +291,7 @@ MonoBehaviour:
   playerStartingPosition: {x: 4.61, y: -4.13}
   requiresHintButton: 1
   requiredItem: 0
+  alternativeItems: 
   requiresItem: 0
   blockIfHasItem: 0
 --- !u!114 &32863801
@@ -612,6 +613,7 @@ MonoBehaviour:
   playerStartingPosition: {x: 0, y: 0}
   requiresHintButton: 0
   requiredItem: 8
+  alternativeItems: 
   requiresItem: 1
   blockIfHasItem: 0
 --- !u!60 &76760059
@@ -1393,8 +1395,9 @@ MonoBehaviour:
   lvlName: CenaFinal
   playerStartingPosition: {x: 0, y: 0}
   requiresHintButton: 0
-  requiredItem: 5
-  requiresItem: 0
+  requiredItem: 11
+  alternativeItems: 
+  requiresItem: 1
   blockIfHasItem: 0
 --- !u!60 &435169723
 PolygonCollider2D:

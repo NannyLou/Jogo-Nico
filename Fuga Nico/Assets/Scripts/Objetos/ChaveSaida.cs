@@ -10,14 +10,13 @@ public class ChaveSaida : MonoBehaviour
     public GameObject telmaPrefab; // Prefab de Telma
     public GameObject chavePrefab; // Prefab da chave
     public AnimationData telmaAnimation; // Animação de Telma pegando a chave
-
     private GameObject telmaInstance; // Instância de Telma
-    private ClickMove clickMove; // Referência para o script ClickMove do jogador
+    private ClickMove clickMove; // ADICIONADO: Referência para o script ClickMove do jogador
 
     private void Awake()
     {
         // Localiza o componente ClickMove no cenário
-        clickMove = FindObjectOfType<ClickMove>();
+        clickMove = FindObjectOfType<ClickMove>(); // ADICIONADO: Inicializa a referência ao ClickMove
     }
 
     public void OnMouseDown()
@@ -30,7 +29,7 @@ public class ChaveSaida : MonoBehaviour
             InventarioManager.instance.UpdateEquipmentCanvas();
             InventarioManager.instance.SelectItem(-1);
 
-            // Desabilita a movimentação do jogador
+            // ADICIONADO: Desabilita a movimentação do jogador
             if (clickMove != null)
             {
                 clickMove.DisableMovement();
@@ -59,7 +58,7 @@ public class ChaveSaida : MonoBehaviour
         }
 
         // Aguarda a duração da animação (2 segundos)
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2); // Ajuste conforme a duração real da animação
 
         // Instancia a chave no ponto designado
         Instantiate(chavePrefab, chaveWaypoint.position, chaveWaypoint.rotation);
@@ -73,7 +72,7 @@ public class ChaveSaida : MonoBehaviour
         // Remove o objeto original da chave do cenário
         Destroy(gameObject); // Assumindo que este script está anexado ao objeto original da chave
 
-        // Habilita a movimentação do jogador novamente
+        // ADICIONADO: Reabilita a movimentação do jogador
         if (clickMove != null)
         {
             clickMove.EnableMovement();

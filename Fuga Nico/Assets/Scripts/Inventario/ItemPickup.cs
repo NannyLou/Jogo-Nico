@@ -33,9 +33,18 @@ public class ItemPickup : MonoBehaviour
     {
         if (clickMove != null)
         {
-            // Move o jogador até a posição do item
-            clickMove.MovePlayerToPoint(transform.position);
-            isPlayerMovingToItem = true;
+            // ADICIONADO: Verifica se o movimento está permitido antes de mover
+            if (clickMove.CanMove())
+            {
+                // Move o jogador até a posição do item
+                clickMove.MovePlayerToPoint(transform.position);
+                isPlayerMovingToItem = true;
+                Debug.Log("MovePlayerToPoint chamado em ItemPickup.");
+            }
+            else
+            {
+                Debug.Log("Movimento desabilitado. Não é possível mover o jogador para o item.");
+            }
         }
     }
 

@@ -16,6 +16,7 @@ public class ItemData : ScriptableObject
         remedio,
         celular,
         feno,
+        panela,
         // Adicione outros itens conforme necessário
     }
 

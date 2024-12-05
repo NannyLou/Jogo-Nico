@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ba4f0597d8f2d1468da023afd04b4fb, type: 3}
-  m_Name: Teo Esq
+  m_Script: {fileID: 11500000, guid: e492ca6afbe6c3441931c164a39b434b, type: 3}
+  m_Name: Panela
   m_EditorClassIdentifier: 
-  framesOfGap: 0
-  sprites:
-  - {fileID: -641891348, guid: e246a3d0021e4424582c251e97540931, type: 3}
-  loop: 0
+  itemID: 11
+  itemName: Panela
+  itemSlotSprite: {fileID: -2030143760, guid: 553c95472d00dac459427618ac826beb, type: 3}
