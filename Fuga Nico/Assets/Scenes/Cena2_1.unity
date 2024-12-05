@@ -290,8 +290,9 @@ MonoBehaviour:
   playerStartingPosition: {x: -5.27, y: -1.66}
   requiresHintButton: 0
   requiredItem: 0
+  alternativeItems: 
   requiresItem: 0
-  blockIfHasItem: 0
+  blockingItem: 0
 --- !u!60 &76760059
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1161,11 +1162,11 @@ MonoBehaviour:
   - 'Telma: Finalmente liberdadee!!'
   - 'Nico: Finalmente estamos todos juntos!'
   - 'Teo: Vamos fugir daqui!!'
-  - 'Nico: Quase la, precisamos da chave final para fugir-mos'
-  - 'Teo: Mas ela esta na cozinha e o Valdevino tambem'
+  - 'Nico: Quase la, precisamos da chave final para fugir-mos.'
+  - 'Teo: Mas ela esta na cozinha e o Valdivino tambem.'
   - "Telma: Ele n\xE3o cairia no mesmo truque duas vezes."
-  - 'Zeca: E se nos usarmos o telefone do Daniel para eu ligar para o Valdivino'
-  - 'Zeca: E fingir ser o Daniel.'
+  - 'Zeca: E se nos usarmos o telefone do Daniel para eu ligar para o Valdivino...'
+  - 'Zeca: E fingir ser o Daniel?'
   - "Nico: Otima Ideia, vamos ligar l\xE1 fora!"
   - 'Nico: Ligar perto da casa seria arriscado.'
   teoItemData: {fileID: 11400000, guid: a350c228a2fbf3c45b2d094ff0105d70, type: 2}

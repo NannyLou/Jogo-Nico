@@ -202,9 +202,12 @@ PolygonCollider2D:
       - {x: -6.7223387, y: 3.7570522}
       - {x: -8.307179, y: -1.0780127}
       - {x: -0.123380005, y: -1.1864334}
-      - {x: -0.07525939, y: -3.3745048}
-      - {x: -1.3263508, y: -4.6473045}
-      - {x: -0.5463779, y: -4.6981006}
+      - {x: 0.26726857, y: -2.391886}
+      - {x: 1.216714, y: -3.5135143}
+      - {x: 0.4223287, y: -4.3430333}
+      - {x: -1.0956407, y: -4.8326507}
+      - {x: -0.6155909, y: -5.068794}
+      - {x: 0.04295183, y: -4.9603596}
       - {x: 2.6375823, y: -4.3003206}
       - {x: 2.7063575, y: -1.2491916}
       - {x: 2.7043571, y: 0.5291045}
@@ -435,20 +438,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6166820a797431b4ea0558d0d9423f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredItem: 11
-  playerRespawnPoint: {fileID: 432971415}
-  telmaWaypoint: {fileID: 1204619574}
-  teoWaypoint: {fileID: 1999378680}
-  zecaWaypoint: {fileID: 762297435}
-  telma: {fileID: 7968414553819447079, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
-  teo: {fileID: 131634402633723919, guid: 2236bc5cfea8ece43bece118f484bf22, type: 3}
-  zeca: {fileID: 1527559259133811040, guid: 50c0a04914fafc44da387d956ea74f98, type: 3}
-  seta: {fileID: 688384498}
-  telmaAttackAnimation: {fileID: 11400000, guid: 08d77e7e235a9544580bf3347bc0b551, type: 2}
-  teoAttackAnimation: {fileID: 11400000, guid: 9dc51699d84574d41bc3d2ec641339d8, type: 2}
-  playerAttackAnimation: {fileID: 11400000, guid: 64d54764797fc564d9a84e0fed7ab726, type: 2}
-  attackDuration: 3
-  vilao: {fileID: 76725313}
+  itemNecessario: 11
+  waypointJogador: {fileID: 432971415}
+  waypointTelma: {fileID: 1204619574}
+  waypointTeo: {fileID: 1999378680}
+  waypointZeca: {fileID: 762297435}
+  setaIndicativa: {fileID: 688384498}
+  telmaPrefab: {fileID: 7968414553819447079, guid: babe1cd9a67beda4aa54c6c85999ff84, type: 3}
+  teoPrefab: {fileID: 131634402633723919, guid: 2236bc5cfea8ece43bece118f484bf22, type: 3}
+  zecaPrefab: {fileID: 1527559259133811040, guid: 50c0a04914fafc44da387d956ea74f98, type: 3}
+  animacaoJogadorBater: {fileID: 11400000, guid: 64d54764797fc564d9a84e0fed7ab726, type: 2}
+  animacaoTelmaBater: {fileID: 11400000, guid: 08d77e7e235a9544580bf3347bc0b551, type: 2}
+  animacaoTeoBater: {fileID: 11400000, guid: 30f6675a311a61f419f3bb5058fd634f, type: 2}
+  animacaoZecaBater: {fileID: 0}
 --- !u!1 &93495318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,7 +1509,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueID: DialogoCenaFinal
   dialogueLines:
-  - "Valdivino: N\xC2O, ISSO N\xC3O \xC9 POSSIVEL, COMO VOC\xCAS FUGIRAM??"
+  - "Valdivino: N\xC2O, ISSO N\xC3O \xC9 POSSIVEL."
+  - "Valdivino: COMO VOC\xCAS FUGIRAM??"
   - "Nico: Voc\xEAs n\xE3o contavem com a minha ast\xFAcia "
   - "Valdivino: Ah ta, me esqueci que animal n\xE3o fala : / "
   - 'Nico: Ahh, verdade, Zeca pode ir traduzindo o que eu estou falando?'
@@ -1582,7 +1585,7 @@ MonoBehaviour:
   requiredItem: 0
   alternativeItems: 
   requiresItem: 0
-  blockIfHasItem: 0
+  blockingItem: 0
 --- !u!60 &688384501
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1704,13 +1707,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688384498}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.672, y: -2.37, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7043846, w: 0.70981854}
+  m_LocalPosition: {x: 7.37, y: -2.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.56}
 --- !u!1 &753263518
 GameObject:
   m_ObjectHideFlags: 0
@@ -2476,7 +2479,7 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -2.9035912, y: -5.0323205}
       - {x: -7.107447, y: -4.7099495}
-      - {x: -11.406479, y: -4.664325}
+      - {x: -10.638309, y: -4.6993895}
       - {x: -9.615373, y: -5.5368834}
       - {x: -9.285947, y: -6.518966}
       - {x: 0.28318056, y: -6.5189657}

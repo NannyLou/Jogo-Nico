@@ -57,8 +57,8 @@ public class ChaveSaida : MonoBehaviour
             telmaAnimator.PlayAnimation(telmaAnimation);
         }
 
-        // Aguarda a duração da animação (2 segundos)
-        yield return new WaitForSeconds(2); // Ajuste conforme a duração real da animação
+        // Aguarda a duração da animação (n segundos)
+        yield return new WaitForSeconds(3); // Ajuste conforme a duração real da animação
 
         // Instancia a chave no ponto designado
         Instantiate(chavePrefab, chaveWaypoint.position, chaveWaypoint.rotation);

@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/CenaFinal.unity
     guid: 370e558e1c871884bba639fee0fe80ed
   - enabled: 1
-    path: Assets/Scenes/CenaFinalCre.unity
+    path: Assets/Scenes/Menu.unity
     guid: 398abe747e4ac7c41802cf49ce82ceae
+  - enabled: 1
+    path: Assets/Scenes/CenaFinalCre.unity
+    guid: 29486ea3ee790774e9aedc0f0b9d1631
   m_configObjects: {}

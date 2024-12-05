@@ -1,18 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VilaoMovimento : MonoBehaviour
 {
+    [Header("Waypoints")]
     public Transform[] waypoints;
     public float speed = 2f;
 
     private int currentWaypointIndex = 0;
     private SpriteAnimator spriteAnimator;
 
+    [Header("Animações")]
     public AnimationData walkAnimation;
     public AnimationData idleAnimation;
 
+    [Header("Chave")]
     public GameObject chavePrefab;
     private GameObject chaveInstanciada;
     public Transform chavePosition;
@@ -22,17 +24,28 @@ public class VilaoMovimento : MonoBehaviour
     private bool isReturning = false;
     private bool hasDroppedSecondKey = false;
 
+    [Header("Segunda Chave")]
     public int waypointIndexToDropKey = 1;
     public GameObject secondKeyPrefab;
 
+    [Header("Diálogo")]
     public string[] dialogueLines;
+
     private DialogueManager dialogueManager;
     private bool isDialogueActive = false;
 
     private UniqueID uniqueID; // Identificador único do vilão
 
-    // Referência ao objeto seta
+    [Header("Seta")]
     public GameObject seta; // Objeto que será ativado ao desaparecer o vilão
+
+    // Referência ao ClickMove
+    private ClickMove clickMove;
+
+    // Novo campo para definir o diálogo após o vilão desaparecer
+    [Header("Diálogo Pós-Desaparecimento")]
+    [TextArea]
+    public string[] postDesapareceuDialogueLines;
 
     private void Awake()
     {
@@ -82,86 +95,136 @@ public class VilaoMovimento : MonoBehaviour
         {
             seta.SetActive(false);
         }
+
+        // Obtém a referência ao ClickMove
+        clickMove = FindObjectOfType<ClickMove>();
+        if (clickMove == null)
+        {
+            // Nenhum Debug.Log conforme solicitado
+        }
+
+        // Inicia a movimentação do vilão
+        StartCoroutine(MoveAlongPath());
     }
 
-    private void Update()
+    private IEnumerator MoveAlongPath()
+    {
+        if (clickMove != null)
+        {
+            clickMove.DisableMovement();
+        }
+
+        while (currentWaypointIndex < waypoints.Length)
+        {
+            Transform target = waypoints[currentWaypointIndex];
+            while (Vector3.Distance(transform.position, target.position) > 0.1f)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+                UpdateSpriteDirection(target.position);
+                UpdateKeyPosition();
+                yield return null;
+            }
+            currentWaypointIndex++;
+        }
+
+        // Chegou ao final do caminho (ida)
+        if (spriteAnimator != null && idleAnimation != null)
+        {
+            spriteAnimator.PlayAnimation(idleAnimation);
+        }
+
+        if (dialogueManager != null && !isDialogueActive)
+        {
+            dialogueManager.StartDialogue(dialogueLines);
+            isDialogueActive = true;
+        }
+
+        if (clickMove != null)
+        {
+            clickMove.EnableMovement();
+        }
+    }
+
+    private IEnumerator MoveBackAlongPath()
+    {
+        if (waypoints.Length == 0)
+            yield break;
+
+        isReturning = true;
+        if (clickMove != null)
+        {
+            clickMove.DisableMovement();
+        }
+
+        // Reset currentWaypointIndex para o último waypoint válido
+        currentWaypointIndex = waypoints.Length - 1;
+
+        // Inicia a animação de caminhada na volta
+        if (spriteAnimator != null && walkAnimation != null)
+        {
+            spriteAnimator.PlayAnimation(walkAnimation);
+        }
+
+        while (currentWaypointIndex >= 0)
+        {
+            Transform target = waypoints[currentWaypointIndex];
+            while (Vector3.Distance(transform.position, target.position) > 0.1f)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+                UpdateSpriteDirection(target.position);
+                UpdateKeyPosition();
+                yield return null;
+            }
+
+            if (!hasDroppedSecondKey && currentWaypointIndex == waypointIndexToDropKey)
+            {
+                DropSecondKey();
+            }
+
+            currentWaypointIndex--;
+
+            // Evita que currentWaypointIndex fique negativo
+            if (currentWaypointIndex < 0)
+            {
+                break;
+            }
+        }
+
+        // Movimentação de retorno concluída
+
+        // Registra o vilão como destruído no StateManager
+        if (StateManager.instance != null && uniqueID != null)
+        {
+            StateManager.instance.RegisterDestroyedObject(uniqueID.uniqueID);
+        }
+
+        // Ativa a seta antes de destruir o vilão
+        if (seta != null)
+        {
+            seta.SetActive(true);
+        }
+
+        // Inicia o diálogo após a movimentação de volta
+        if (dialogueManager != null && postDesapareceuDialogueLines.Length > 0)
+        {
+            // Aguardar um breve momento para garantir que a seta foi ativada
+            yield return new WaitForSeconds(0.1f);
+            dialogueManager.StartDialogue(postDesapareceuDialogueLines);
+        }
+
+        if (clickMove != null)
+        {
+            clickMove.EnableMovement();
+        }
+
+        Destroy(gameObject);
+    }
+
+    public void StartReturn()
     {
         if (!isReturning)
         {
-            MoveAlongPath();
-        }
-        else
-        {
-            MoveBackAlongPath();
-        }
-    }
-
-    private void MoveAlongPath()
-    {
-        if (currentWaypointIndex < waypoints.Length)
-        {
-            Transform target = waypoints[currentWaypointIndex];
-
-            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-
-            UpdateSpriteDirection(target.position);
-            UpdateKeyPosition();
-
-            if (Vector3.Distance(transform.position, target.position) < 0.1f)
-            {
-                currentWaypointIndex++;
-            }
-        }
-        else
-        {
-            if (spriteAnimator != null && idleAnimation != null)
-            {
-                spriteAnimator.PlayAnimation(idleAnimation);
-            }
-
-            if (dialogueManager != null && !isDialogueActive)
-            {
-                dialogueManager.StartDialogue(dialogueLines);
-                isDialogueActive = true;
-            }
-        }
-    }
-
-    private void MoveBackAlongPath()
-    {
-        if (currentWaypointIndex >= 0)
-        {
-            Transform target = waypoints[currentWaypointIndex];
-
-            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-
-            UpdateSpriteDirection(target.position);
-
-            if (Vector3.Distance(transform.position, target.position) < 0.1f)
-            {
-                if (!hasDroppedSecondKey && currentWaypointIndex == waypointIndexToDropKey)
-                {
-                    DropSecondKey();
-                }
-
-                currentWaypointIndex--;
-            }
-        }
-        else
-        {
-            // Registra o vilão como destruído e o remove da cena
-            if (StateManager.instance != null && uniqueID != null)
-            {
-                StateManager.instance.RegisterDestroyedObject(uniqueID.uniqueID);
-            }
-
-            // Ativa a seta antes de destruir o vilão
-            if (seta != null)
-            {
-                seta.SetActive(true);
-            }
-
-            Destroy(gameObject);
+            StartCoroutine(MoveBackAlongPath());
         }
     }
 
@@ -188,31 +251,6 @@ public class VilaoMovimento : MonoBehaviour
         if (chaveInstanciada != null && chavePosition != null)
         {
             chaveInstanciada.transform.position = chavePosition.position;
-        }
-    }
-
-    public void StartReturn()
-    {
-        if (!isReturning)
-        {
-            isReturning = true;
-            currentWaypointIndex = waypoints.Length - 1;
-
-            if (spriteAnimator != null && walkAnimation != null)
-            {
-                spriteAnimator.PlayAnimation(walkAnimation);
-            }
-
-            if (chaveInstanciada != null)
-            {
-                Destroy(chaveInstanciada);
-            }
-
-            if (dialogueManager != null && isDialogueActive)
-            {
-                dialogueManager.EndDialogue();
-                isDialogueActive = false;
-            }
         }
     }
 }

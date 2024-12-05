@@ -4,97 +4,137 @@ using UnityEngine;
 
 public class MorteValdivino : MonoBehaviour
 {
-    public ItemData.items requiredItem = ItemData.items.panela; // Item necessário para interação
-    public Transform playerRespawnPoint; // Ponto para onde o jogador será transportado
-    public Transform telmaWaypoint, teoWaypoint, zecaWaypoint; // Waypoints para os personagens
-    public GameObject telma, teo, zeca; // Referência aos personagens
-    public GameObject seta; // Objeto da seta que aparece ao final
-    public AnimationData telmaAttackAnimation, teoAttackAnimation, playerAttackAnimation; // Animações de ataque
-    public float attackDuration = 3f; // Duração da animação de ataque
-    public GameObject vilao; // Referência ao vilão
+    public ItemData.items itemNecessario = ItemData.items.panela; // Item necessário para interagir com o vilão
+    public Transform waypointJogador; // Ponto onde o jogador será transportado
+    public Transform waypointTelma, waypointTeo, waypointZeca; // Waypoints para Telma, Teo e Zeca
+    public GameObject setaIndicativa; // Seta que aparecerá no final
 
-    private bool interactionDone = false; // Verifica se a interação já foi feita
+    public GameObject telmaPrefab, teoPrefab, zecaPrefab; // Prefabs de Telma, Teo e Zeca
+    private GameObject telmaInstance, teoInstance, zecaInstance; // Instâncias no cenário
+
+    public AnimationData animacaoJogadorBater; // Animação do jogador bater no vilão
+    public AnimationData animacaoTelmaBater, animacaoTeoBater, animacaoZecaBater; // Animações de Telma, Teo e Zeca
+
+    private SpriteAnimator jogadorAnimator; // Referência ao animador do jogador
+    private ClickMove clickMove; // Controle de movimento do jogador
+
+    private Vector3 cameraFixedPosition; // Posição fixa da câmera
+
+    private SpriteRenderer spriteRenderer; // Referência ao SpriteRenderer de Valdivino
+    private Collider2D colliderValdivino; // Referência ao Collider2D de Valdivino
+
+    private void Start()
+    {
+        clickMove = FindObjectOfType<ClickMove>();
+        if (clickMove != null)
+        {
+            jogadorAnimator = clickMove.GetComponent<SpriteAnimator>();
+        }
+
+        if (setaIndicativa != null)
+            setaIndicativa.SetActive(false); // Garante que a seta esteja oculta inicialmente
+
+        // Captura a posição inicial da câmera
+        cameraFixedPosition = Camera.main.transform.position;
+
+        // Obtém referências ao SpriteRenderer e Collider2D do Valdivino
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        colliderValdivino = GetComponent<Collider2D>();
+    }
 
     private void OnMouseDown()
     {
-        if (interactionDone) return;
-
-        // Verifica se o jogador possui o item necessário
-        if (InventarioManager.instance.selectedItemID == requiredItem)
+        // Verifica se o item correto está selecionado no inventário
+        if (InventarioManager.instance.selectedItemID == itemNecessario)
         {
-            interactionDone = true;
-
             // Remove o item do inventário
-            InventarioManager.instance.collectedItems.RemoveAll(item => item.itemID == requiredItem);
+            InventarioManager.instance.collectedItems.RemoveAll(item => item.itemID == itemNecessario);
             InventarioManager.instance.UpdateEquipmentCanvas();
             InventarioManager.instance.SelectItem(-1);
 
-            // Inicia a sequência de interação
-            StartCoroutine(HandleInteraction());
+            // Inicia a interação
+            StartCoroutine(InteragirComVilao());
         }
         else
         {
-            Debug.Log("Item necessário não está selecionado.");
+            Debug.Log("Você precisa usar o item correto!");
+            // Opcional: Adicionar feedback visual ao jogador
         }
     }
 
-    private IEnumerator HandleInteraction()
+    private IEnumerator InteragirComVilao()
     {
-        // Transporta o jogador para o ponto específico
-        var player = FindObjectOfType<ClickMove>().gameObject;
-        player.transform.position = playerRespawnPoint.position;
+        // Desabilita o movimento do jogador
+        clickMove.DisableMovement();
 
-        // Faz Telma, Teo e Zeca aparecerem no cenário
-        telma.SetActive(true);
-        teo.SetActive(true);
-        zeca.SetActive(true);
+        // Transporta o jogador para o waypoint
+        clickMove.transform.position = waypointJogador.position;
 
-        // Aguarda 1 frame para garantir que os objetos estejam ativos
-        yield return null;
+        // Mantém a câmera fixa na posição inicial
+        Camera.main.transform.position = cameraFixedPosition;
 
-        // Move os personagens para suas posições corretas
-        telma.transform.position = telmaWaypoint.position;
-        teo.transform.position = teoWaypoint.position;
-        zeca.transform.position = zecaWaypoint.position;
+        // Instancia Telma, Teo e Zeca no cenário
+        telmaInstance = Instantiate(telmaPrefab, waypointTelma.position, waypointTelma.rotation);
+        teoInstance = Instantiate(teoPrefab, waypointTeo.position, waypointTeo.rotation);
+        zecaInstance = Instantiate(zecaPrefab, waypointZeca.position, waypointZeca.rotation);
 
-        // Aguarda um instante para garantir que os personagens estejam na posição
+        // Aguarda um pequeno tempo para simular transição
         yield return new WaitForSeconds(0.5f);
 
-        // Obtém os animadores dos personagens e executa as animações de ataque
-        var telmaAnimator = telma.GetComponent<SpriteAnimator>();
-        var teoAnimator = teo.GetComponent<SpriteAnimator>();
-        var playerAnimator = player.GetComponent<SpriteAnimator>();
-
-        if (telmaAnimator != null && telma.activeSelf)
-            telmaAnimator.PlayAnimation(telmaAttackAnimation);
-        if (teoAnimator != null && teo.activeSelf)
-            teoAnimator.PlayAnimation(teoAttackAnimation);
-        if (playerAnimator != null)
-            playerAnimator.PlayAnimation(playerAttackAnimation);
-
-        // Aguarda o tempo de duração da animação de ataque
-        yield return new WaitForSeconds(attackDuration);
-
-        // Remove o vilão do cenário
-        if (vilao != null)
+        // Telma, Teo, Zeca e Jogador fazem a animação de bater no vilão
+        if (jogadorAnimator != null && animacaoJogadorBater != null)
         {
-            Destroy(vilao);
+            jogadorAnimator.PlayAnimation(animacaoJogadorBater);
+        }
+        if (telmaInstance != null && telmaInstance.TryGetComponent<SpriteAnimator>(out var telmaAnimator) && animacaoTelmaBater != null)
+        {
+            telmaAnimator.PlayAnimation(animacaoTelmaBater);
+        }
+        if (teoInstance != null && teoInstance.TryGetComponent<SpriteAnimator>(out var teoAnimator) && animacaoTeoBater != null)
+        {
+            teoAnimator.PlayAnimation(animacaoTeoBater);
+        }
+        if (zecaInstance != null && zecaInstance.TryGetComponent<SpriteAnimator>(out var zecaAnimator) && animacaoZecaBater != null)
+        {
+            zecaAnimator.PlayAnimation(animacaoZecaBater);
         }
 
-        // Aguarda um tempo antes de fazer os personagens saírem
-        yield return new WaitForSeconds(1f);
+        // Aguarda a duração das animações antes de iniciar os timers de desativação
+        yield return new WaitForSeconds(3f); // Tempo para Valdivino desaparecer antes dos personagens
 
-        // Esconde os personagens após o ataque
-        telma.SetActive(false);
-        teo.SetActive(false);
-        zeca.SetActive(false);
+        // Desativa o Sprite e o Collider do Valdivino após 3 segundos
+        if (spriteRenderer != null)
+            spriteRenderer.enabled = false;
+        if (colliderValdivino != null)
+            colliderValdivino.enabled = false;
 
-        // Faz a seta aparecer no cenário
-        if (seta != null)
+        // Inicia um timer para desativar os personagens e ativar a seta após 2 segundos adicionais (total 5 segundos)
+        StartCoroutine(DesativarPersonagensEAtivarSeta(2f));
+
+        // Mantém a câmera fixa novamente, por garantia
+        Camera.main.transform.position = cameraFixedPosition;
+
+        // Aguarda o tempo total antes de reabilitar o movimento do jogador
+        yield return new WaitForSeconds(2f);
+
+        // Habilita o movimento do jogador novamente
+        clickMove.EnableMovement();
+    }
+
+    private IEnumerator DesativarPersonagensEAtivarSeta(float delay)
+    {
+        // Aguarda o tempo especificado
+        yield return new WaitForSeconds(delay);
+
+        // Remove Telma, Teo e Zeca do cenário
+        if (telmaInstance != null) Destroy(telmaInstance);
+        if (teoInstance != null) Destroy(teoInstance);
+        if (zecaInstance != null) Destroy(zecaInstance);
+
+        // Mostra a seta indicativa
+        if (setaIndicativa != null)
         {
-            seta.SetActive(true);
+            setaIndicativa.SetActive(true);
         }
-
-        Debug.Log("Interação concluída.");
     }
 }
