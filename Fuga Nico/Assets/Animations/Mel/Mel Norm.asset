@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ba4f0597d8f2d1468da023afd04b4fb, type: 3}
-  m_Name: Mel Anda
+  m_Name: Mel Norm
   m_EditorClassIdentifier: 
-  framesOfGap: 11
+  framesOfGap: 0
   sprites:
-  - {fileID: -1345608475, guid: bc8224d8b373c6c4f95fb919c9de54ec, type: 3}
   - {fileID: 1994398052, guid: bc8224d8b373c6c4f95fb919c9de54ec, type: 3}
-  - {fileID: 1863802182, guid: bc8224d8b373c6c4f95fb919c9de54ec, type: 3}
-  loop: 1
+  loop: 0
