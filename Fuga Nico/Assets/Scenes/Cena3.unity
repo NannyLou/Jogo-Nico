@@ -285,7 +285,7 @@ MonoBehaviour:
   lvlName: Cena3_1
   playerStartingPosition: {x: 0, y: 0}
   requiresHintButton: 0
-  requiredItem: 8
+  requiredItem: 11
   alternativeItems: 
   requiresItem: 0
   blockingItem: 0

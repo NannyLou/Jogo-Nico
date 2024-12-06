@@ -79,6 +79,11 @@ public class HintButtonController : MonoBehaviour
                 dialogueLines.Add("Zeca: Bora rapido atrás da chave da saida");
                 hasAnyItem = true;
             }
+            if (InventarioManager.instance.HasItem(ItemData.items.celular))
+            {
+                dialogueLines.Add("Zeca: Ligar aqui é muito arriscado");
+                hasAnyItem = true;
+            }
             if (!hasAnyItem)
             {
                 dialogueLines.Add("Zeca: Precisamos salvar nossos outros amigos animais!!!");

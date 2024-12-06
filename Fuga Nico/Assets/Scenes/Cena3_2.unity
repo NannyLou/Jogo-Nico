@@ -1132,7 +1132,7 @@ MonoBehaviour:
   playerStartingPosition: {x: -5.77, y: -3.78}
   requiresHintButton: 0
   requiredItem: 4
-  alternativeItems: 050000000b000000
+  alternativeItems: 05000000
   requiresItem: 1
   blockingItem: 0
 --- !u!60 &435169723
