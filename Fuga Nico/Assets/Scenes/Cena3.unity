@@ -285,10 +285,11 @@ MonoBehaviour:
   lvlName: Cena3_1
   playerStartingPosition: {x: 0, y: 0}
   requiresHintButton: 0
-  requiredItem: 11
+  requiredItem: 0
   alternativeItems: 
   requiresItem: 0
-  blockingItem: 0
+  blockingItem: 8
+  copo: {fileID: 2145194120}
 --- !u!114 &32863801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,6 +1339,7 @@ MonoBehaviour:
   alternativeItems: 
   requiresItem: 0
   blockingItem: 0
+  copo: {fileID: 0}
 --- !u!60 &435169723
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1568,14 +1570,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AssetsPPU: 100
-  m_RefResolutionX: 1775
-  m_RefResolutionY: 1000
+  m_RefResolutionX: 1920
+  m_RefResolutionY: 1080
   m_UpscaleRT: 0
   m_PixelSnapping: 0
   m_CropFrameX: 0
@@ -2782,6 +2784,7 @@ MonoBehaviour:
   alternativeItems: 
   requiresItem: 1
   blockingItem: 9
+  copo: {fileID: 0}
 --- !u!60 &1337298937
 PolygonCollider2D:
   m_ObjectHideFlags: 0

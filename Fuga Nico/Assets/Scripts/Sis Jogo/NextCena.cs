@@ -16,6 +16,9 @@ public class NextCena : MonoBehaviour
     [Header("Item Bloqueador")]
     public ItemData.items blockingItem; // Item que pode bloquear o acesso
 
+    [Header("Verificação de Objeto Destruído")]
+    public GameObject copo; // Referência ao objeto "copo"
+
     private UniqueID uniqueID; // Identificador único da seta
     private bool hasAccess = false; // Controle de acesso à cena
 
@@ -167,6 +170,17 @@ public class NextCena : MonoBehaviour
                     Debug.Log("O jogador possui o item bloqueador.");
                     return false;
                 }
+            }
+        }
+
+        // Verifica se o objeto "copo" foi destruído
+        if (copo != null && StateManager.instance != null)
+        {
+            UniqueID copoUniqueID = copo.GetComponent<UniqueID>();
+            if (copoUniqueID != null && !StateManager.instance.IsObjectDestroyed(copoUniqueID.uniqueID))
+            {
+                Debug.Log("O objeto 'copo' ainda não foi destruído. Acesso bloqueado.");
+                return false;
             }
         }
 

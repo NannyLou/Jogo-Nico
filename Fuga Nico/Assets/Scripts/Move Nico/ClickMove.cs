@@ -26,11 +26,11 @@ public class ClickMove : MonoBehaviour
         // ADICIONADO: Log para verificar a referência do player
         if (player != null)
         {
-            Debug.Log("Player referenciado em ClickMove: " + player.name);
+            //Debug.Log("Player referenciado em ClickMove: " + player.name);
         }
         else
         {
-            Debug.LogWarning("Player não está referenciado no ClickMove!");
+            //Debug.LogWarning("Player não está referenciado no ClickMove!");
         }
     }
 
@@ -39,12 +39,12 @@ public class ClickMove : MonoBehaviour
         // MODIFICADO: Adicionada verificação da flag canMove
         if (!canMove || (DialogueManager.instance != null && !DialogueManager.instance.CanPlayerMove))
         {
-            Debug.Log("Movimento bloqueado: canMove = " + canMove);
+            //Debug.Log("Movimento bloqueado: canMove = " + canMove);
             return;
         }
         else
         {
-            Debug.Log("Movimento permitido: canMove = " + canMove);
+            //Debug.Log("Movimento permitido: canMove = " + canMove);
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -77,7 +77,7 @@ public class ClickMove : MonoBehaviour
 
         playerWalking = false;
         player.GetComponent<SpriteAnimator>().PlayAnimation(null); // Interrompe a animação de caminhada
-        Debug.Log("StopPlayerMovement chamado: Movimento parado.");
+        //Debug.Log("StopPlayerMovement chamado: Movimento parado.");
     }
 
     public IEnumerator GoToClick(Vector2 mousePos)
@@ -93,7 +93,7 @@ public class ClickMove : MonoBehaviour
         if (playerWalking)
         {
             playerWalking = false;
-            Debug.Log("Interrompendo movimento atual.");
+            //Debug.Log("Interrompendo movimento atual.");
             yield return null; // Aguarda o final do quadro para garantir que o estado seja atualizado
         }
 
@@ -113,7 +113,7 @@ public class ClickMove : MonoBehaviour
         // ADICIONADO: Verifica se o movimento está permitido
         if (!canMove)
         {
-            Debug.Log("Cannot move: Movement is disabled.");
+            //Debug.Log("Cannot move: Movement is disabled.");
             return;
         }
 
@@ -127,7 +127,7 @@ public class ClickMove : MonoBehaviour
         if (playerWalking)
         {
             playerWalking = false;
-            Debug.Log("Interrompendo movimento durante MovePlayerToPoint.");
+            //Debug.Log("Interrompendo movimento durante MovePlayerToPoint.");
         }
 
         // Inicia o movimento
@@ -149,7 +149,7 @@ public class ClickMove : MonoBehaviour
         // Para a animação de caminhada
         player.GetComponent<SpriteAnimator>().PlayAnimation(null);
         goToClickCoroutine = null;
-        Debug.Log("CleanAfterClick concluído: Movimento finalizado.");
+        //Debug.Log("CleanAfterClick concluído: Movimento finalizado.");
         yield return null;
     }
 
@@ -158,14 +158,14 @@ public class ClickMove : MonoBehaviour
     {
         canMove = false;
         StopPlayerMovement(); // Opcional: interrompe qualquer movimento atual
-        Debug.Log("DisableMovement chamado: Movimento desabilitado.");
+        //Debug.Log("DisableMovement chamado: Movimento desabilitado.");
     }
 
     // ADICIONADO: Método para habilitar o movimento do personagem
     public void EnableMovement()
     {
         canMove = true;
-        Debug.Log("EnableMovement chamado: Movimento habilitado.");
+        //Debug.Log("EnableMovement chamado: Movimento habilitado.");
     }
 
     // ADICIONADO: Método para verificar se o movimento está permitido

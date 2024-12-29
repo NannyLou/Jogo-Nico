@@ -4,9 +4,14 @@ using UnityEngine.SceneManagement;
 public class SceneLoader2 : MonoBehaviour
 {
     // Carrega a cena especificada
-    public void LoadScene(string Cena1)
+    public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(Cena1);
+        if (sceneName == "Menu") // Substitua pelo nome real da sua cena de jogo
+        {
+            ResetGameState(); // Reseta o estado do jogo
+        }
+
+        SceneManager.LoadScene(sceneName);
     }
 
     // Sai do jogo
@@ -17,5 +22,26 @@ public class SceneLoader2 : MonoBehaviour
         #else
             Application.Quit();
         #endif
+    }
+
+    // Método para resetar o estado do jogo
+    private void ResetGameState()
+    {
+        // Reseta o inventário
+        if (InventarioManager.instance != null)
+        {
+            InventarioManager.instance.collectedItems.Clear();
+            InventarioManager.instance.collectedItemIDs.Clear();
+            InventarioManager.instance.UpdateEquipmentCanvas();
+        }
+
+        // Reseta os estados de objetos
+        if (StateManager.instance != null)
+        {
+            StateManager.instance.ClearStates();
+        }
+
+        // Resetar outros sistemas persistentes, se necessário
+        // Exemplo: resetar progresso, variáveis globais, etc.
     }
 }

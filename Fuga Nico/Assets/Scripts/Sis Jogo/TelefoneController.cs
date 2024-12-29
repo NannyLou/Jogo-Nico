@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TelefoneController : MonoBehaviour
 {
@@ -10,10 +11,9 @@ public class TelefoneController : MonoBehaviour
 
     [Header("Referências")]
     public UniqueID phoneUniqueID; // Identificador único do telefone
-    public ItemData.items activationItemID; // Item necessário para ativar o Sprite e o Collider
+    public ItemData.items activationItemID; // Item necessário para ativar o telefone
     public ItemData.items requiredItemID; // Item necessário para interagir com o telefone
-    public Collider2D phoneCollider; // Collider do telefone
-    public SpriteRenderer phoneSpriteRenderer; // Sprite Renderer do telefone
+    public Button celularObj; // O botão que representa o telefone na cena
 
     private bool hasBeenUsed = false; // Garante que o telefone só seja usado uma vez
 
@@ -32,6 +32,9 @@ public class TelefoneController : MonoBehaviour
 
         // Inicializa o estado do telefone
         UpdateTelefoneState();
+
+        // Adiciona ouvinte de clique ao botão celularObj
+        celularObj.onClick.AddListener(OnPhoneButtonClick);
     }
 
     private void Update()
@@ -48,32 +51,29 @@ public class TelefoneController : MonoBehaviour
             return;
         }
 
-        // Verifica se o item necessário para ativação está no inventário
+        // Verifica se os itens necessários estão no inventário
         bool hasActivationItem = InventarioManager.instance.collectedItems.Exists(item => item.itemID == activationItemID);
+        bool hasRequiredItem = InventarioManager.instance.collectedItems.Exists(item => item.itemID == requiredItemID);
 
-        // Ativa ou desativa o Collider e o Sprite Renderer
-        if (phoneCollider != null) phoneCollider.enabled = hasActivationItem;
-        if (phoneSpriteRenderer != null) phoneSpriteRenderer.enabled = hasActivationItem;
-
-        if (hasActivationItem)
+        // Ativa o botão celularObj se os dois itens estiverem no inventário
+        if (celularObj != null)
         {
-            Debug.Log("Item necessário para ativação encontrado no inventário. Telefone disponível para visualização.");
+            celularObj.gameObject.SetActive(hasActivationItem && hasRequiredItem);
+        }
+
+        if (hasActivationItem && hasRequiredItem)
+        {
+            Debug.Log("Itens necessários encontrados no inventário. Botão do telefone disponível.");
         }
         else
         {
-            Debug.Log("Item necessário para ativação não encontrado no inventário. Telefone oculto.");
+            Debug.Log("Itens necessários não encontrados no inventário. Botão do telefone oculto.");
         }
     }
 
-    private void OnMouseDown()
+    private void OnPhoneButtonClick()
     {
-        Debug.Log($"Clique detectado no GameObject com TelefoneController. Ativo: {gameObject.activeSelf}");
-
-        if (!phoneCollider.enabled)
-        {
-            Debug.Log("Telefone não está disponível para interação.");
-            return;
-        }
+        Debug.Log($"Clique detectado no botão com TelefoneController. Ativo: {celularObj.gameObject.activeSelf}");
 
         if (hasBeenUsed)
         {
@@ -87,9 +87,15 @@ public class TelefoneController : MonoBehaviour
             return;
         }
 
-        // Verifica se o item necessário para interação está selecionado
-        if (InventarioManager.instance.selectedItemID == requiredItemID)
+        // Verifica se o item necessário para interação está no inventário
+        if (InventarioManager.instance.HasItem(ItemData.items.celular))
         {
+            // Remove o item Celular do inventário
+            InventarioManager.instance.collectedItems.RemoveAll(item => item.itemID == ItemData.items.celular);
+            InventarioManager.instance.UpdateEquipmentCanvas();
+            InventarioManager.instance.SelectItem(-1);
+            Debug.Log("Item Celular removido do inventário.");
+
             // Inicia o diálogo
             DialogueManager.instance.OnDialogueEnd += HandleDialogueEnd;
             DialogueManager.instance.StartDialogue(dialogueLines);
@@ -97,7 +103,7 @@ public class TelefoneController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Item correto para interação não está selecionado no inventário.");
+            Debug.Log("Item Celular não encontrado no inventário.");
         }
     }
 
@@ -105,15 +111,6 @@ public class TelefoneController : MonoBehaviour
     {
         // Desinscreve-se do evento para evitar múltiplas chamadas
         DialogueManager.instance.OnDialogueEnd -= HandleDialogueEnd;
-
-        // Remove o item necessário para interação do inventário
-        if (InventarioManager.instance.selectedItemID == requiredItemID)
-        {
-            InventarioManager.instance.collectedItems.RemoveAll(item => item.itemID == requiredItemID);
-            InventarioManager.instance.UpdateEquipmentCanvas();
-            InventarioManager.instance.SelectItem(-1);
-            Debug.Log($"Celular com ID {phoneUniqueID.uniqueID} removido do inventário.");
-        }
 
         // Marca o telefone como destruído no StateManager
         if (phoneUniqueID != null && StateManager.instance != null)
@@ -125,7 +122,14 @@ public class TelefoneController : MonoBehaviour
         // Marca que o telefone já foi usado
         hasBeenUsed = true;
 
-        // Destrói o GameObject do telefone
+        // Desativa o botão celularObj
+        if (celularObj != null)
+        {
+            celularObj.gameObject.SetActive(false);
+            Debug.Log("Botão 'Celular Obj' foi desativado.");
+        }
+
+        // Destrói o GameObject do controlador
         Destroy(gameObject);
         Debug.Log($"GameObject com o script TelefoneController foi destruído.");
     }
