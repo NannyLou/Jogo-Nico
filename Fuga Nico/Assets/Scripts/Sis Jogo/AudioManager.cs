@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
@@ -52,8 +53,35 @@ public class MusicManager : MonoBehaviour
         // Armazena as músicas em um array para facilitar a alternância
         musicClips = new AudioClip[] { musicClip1, musicClip2 };
 
-        // Inicia a reprodução da primeira música
-        PlayNextMusic();
+        // Inscreve-se no evento de mudança de cena
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+        // Inicia a reprodução da música se não estiver no "Menu"
+        if (SceneManager.GetActiveScene().name != "Menu")
+        {
+            PlayNextMusic();
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Pausa ou retoma a música com base na cena
+        if (scene.name == "Menu")
+        {
+            StopMusic();
+        }
+        else if (!audioSource.isPlaying)
+        {
+            RestartMusic();
+        }
+    }
+
+    public void OnPlayButtonClicked()
+    {
+        if (SceneManager.GetActiveScene().name == "Menu")
+        {
+            RestartMusic();
+        }
     }
 
     private void PlayNextMusic()
@@ -64,10 +92,29 @@ public class MusicManager : MonoBehaviour
         StartCoroutine(WaitForMusicEnd());
     }
 
+    private void RestartMusic()
+    {
+        StopAllCoroutines();
+        currentClipIndex = 0; // Reinicia a música para o início
+        PlayNextMusic();
+    }
+
+    private void StopMusic()
+    {
+        StopAllCoroutines();
+        audioSource.Stop();
+    }
+
     private IEnumerator WaitForMusicEnd()
     {
         yield return new WaitForSeconds(audioSource.clip.length);
         currentClipIndex = (currentClipIndex + 1) % musicClips.Length;
         PlayNextMusic();
+    }
+
+    private void OnDestroy()
+    {
+        // Desinscreve-se do evento ao destruir o objeto
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

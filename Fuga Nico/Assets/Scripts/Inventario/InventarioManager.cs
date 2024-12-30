@@ -63,8 +63,8 @@ public class InventarioManager : MonoBehaviour
     // Método chamado quando uma nova cena é carregada
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Se a cena for "CenaFinalCre", desativa o inventário
-        if (scene.name == "CenaFinalCre")
+        // Se a cena for "CenaFinalCre" ou "Menu", desativa o inventário
+        if (scene.name == "CenaFinalCre" || scene.name == "Menu")
         {
             if (equipmentCanvas != null)
             {
