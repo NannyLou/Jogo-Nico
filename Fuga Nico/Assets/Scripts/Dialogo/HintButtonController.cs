@@ -141,7 +141,7 @@ public class HintButtonController : MonoBehaviour
             }
             if (!hasAnyItem)
             {
-                dialogueLines.Add("Zeca: Deve ter algo para pegar aqui...");
+                dialogueLines.Add("Zeca: Não deve ter nada para fazer aqui agora.");
             }
         }
         else if (sceneName == "Cena3")
@@ -171,6 +171,21 @@ public class HintButtonController : MonoBehaviour
             if (InventarioManager.instance.HasItem(ItemData.items.telma))
             {
                 dialogueLines.Add("Zeca: Quase lá");
+                hasAnyItem = true;
+            }
+            if (InventarioManager.instance.HasItem(ItemData.items.chaveTelma))
+            {
+                dialogueLines.Add("Zeca: Vamos na Telma testar a chave que estava com o Valdivino");
+                hasAnyItem = true;
+            }
+            if (InventarioManager.instance.HasItem(ItemData.items.chaveTelma))
+            {
+                dialogueLines.Add("Zeca: Vamos na Telma testar a chave que estava com o Valdivino");
+                hasAnyItem = true;
+            }
+            if (InventarioManager.instance.HasItem(ItemData.items.chaveSaida))
+            {
+                dialogueLines.Add("Zeca: Enrole mais não meu fi, bora fugir daqui!!");
                 hasAnyItem = true;
             }
             if (!hasAnyItem)

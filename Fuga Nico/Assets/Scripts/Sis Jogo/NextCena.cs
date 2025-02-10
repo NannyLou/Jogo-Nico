@@ -15,6 +15,8 @@ public class NextCena : MonoBehaviour
 
     [Header("Item Bloqueador")]
     public ItemData.items blockingItem; // Item que pode bloquear o acesso
+    public ItemData.items[] specificBlockingItems; // Itens específicos para bloquear a passagem
+    public string customBlockingMessage; // Mensagem personalizada quando os itens específicos bloqueiam
 
     [Header("Verificação de Objeto Destruído")]
     public GameObject copo; // Referência ao objeto "copo"
@@ -133,6 +135,30 @@ public class NextCena : MonoBehaviour
                 // Se não possui itens necessários e não há item bloqueador, ainda bloqueia o acesso
                 Debug.Log("Acesso bloqueado: não possui itens necessários nem item bloqueador.");
                 return false;
+            }
+        }
+
+        // Verifica se o jogador possui os itens específicos bloqueadores (2 itens)
+        if (specificBlockingItems != null && specificBlockingItems.Length == 2)
+        {
+            bool hasItem1 = InventarioManager.instance != null &&
+                             InventarioManager.instance.HasItem(specificBlockingItems[0]);
+            bool hasItem2 = InventarioManager.instance != null &&
+                             InventarioManager.instance.HasItem(specificBlockingItems[1]);
+
+            if (hasItem1 && hasItem2)
+            {
+                Debug.Log("Acesso bloqueado: o jogador possui ambos os itens bloqueadores.");
+
+                // Exibe a mensagem personalizada se configurada
+                if (!string.IsNullOrEmpty(customBlockingMessage))
+                {
+                    if (mensagemManager != null)
+                    {
+                        mensagemManager.MostrarMensagem(customBlockingMessage);
+                    }
+                }
+                return false; // Bloqueia se ambos os itens estiverem presentes
             }
         }
 

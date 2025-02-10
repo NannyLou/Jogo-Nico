@@ -7,17 +7,25 @@ public class SceneDialogue : MonoBehaviour
     public string uniqueID; // Identificador único para este diálogo no StateManager
     public string[] dialogueLines; // Linhas do diálogo a serem exibidas
 
+    [Header("Condição para Mostrar Diálogo")]
+    public bool requireItem = false; // Se ativado, o diálogo só aparecerá se o jogador tiver o item
+    public ItemData.items requiredItem; // Item necessário para iniciar o diálogo
+
     private void Start()
     {
-        // Verifica se o diálogo já foi mostrado
-        if (StateManager.instance != null && StateManager.instance.IsObjectDestroyed(uniqueID))
+        // Se não for necessário um item, ou se o jogador possui o item requerido, inicie o diálogo
+        if (!requireItem || (InventarioManager.instance != null && InventarioManager.instance.HasItem(requiredItem)))
         {
-            // O diálogo já foi exibido antes; nada acontece
-            return;
-        }
+            // Verifica se o diálogo já foi mostrado
+            if (StateManager.instance != null && StateManager.instance.IsObjectDestroyed(uniqueID))
+            {
+                // O diálogo já foi exibido antes; nada acontece
+                return;
+            }
 
-        // Inicia uma coroutine para aguardar antes de exibir o diálogo
-        StartCoroutine(StartDialogueAfterDelay(0.01f)); // Aguarda 1 segundo
+            // Inicia uma coroutine para aguardar antes de exibir o diálogo
+            StartCoroutine(StartDialogueAfterDelay(0.01f)); // Aguarda 1 segundo
+        }
     }
 
     private IEnumerator StartDialogueAfterDelay(float delay)
